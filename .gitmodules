@@ -1,0 +1,3 @@
+[submodule "libs"]
+	path = libs
+	url = ssh://git@redmine.ps.uni-saarland.de/comp-dec-modal-libs.git

@@ -1,0 +1,29 @@
+Coq Formalization to 
+
+    A Machine-Checked Constructive Metatheory of
+    Computation Tree Logic
+
+contents:
+  libs: finite set library, library for hilbert derivations, and some tactics
+  K : formalization of results for K (see results.v for main results)
+  Kstar : formalization of results for K* (see results.v)
+  CTL: formalizatin of results for CTL (see result.v)
+
+All files are licensed under the CeCILL-B license. For details refer to the
+LICENSE file.
+
+To compile the development, you need:
+   coq-8.4pl6 or coq 8.5
+   mathcomp-1.6 (only the ssreflect component is required)
+
+You can build everything with
+
+    $ make -j5 all
+
+depending on your machine, this may take several minutes.
+
+The HTML documentation can be built using 
+
+    $ make -j5 website
+
+afterwards point your browser to website/index.html

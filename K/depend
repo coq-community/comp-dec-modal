@@ -1,0 +1,6 @@
+K_def.vo K_def.v.beautified: K_def.v
+demo.vo demo.v.beautified: demo.v K_def.vo
+gentzen.vo gentzen.v.beautified: gentzen.v K_def.vo demo.vo
+hilbert_ref.vo hilbert_ref.v.beautified: hilbert_ref.v K_def.vo demo.vo
+results.vo results.v.beautified: results.v K_def.vo demo.vo hilbert_ref.vo gentzen.vo universal_model.vo
+universal_model.vo universal_model.v.beautified: universal_model.v K_def.vo demo.vo gentzen.vo
