@@ -18,6 +18,7 @@ clean:
 	$(MAKE) -C Kstar clean
 	$(MAKE) -C K clean
 	rm -rf website/html website/gallinahtml
+	rm -rf libs/.*.aux K/.*.aux Kstar/.*.aux CTL/.*.aux
 
 graph:
 	$(MAKE) -C CTL graph
