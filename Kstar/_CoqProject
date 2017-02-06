@@ -1,7 +1,7 @@
 -install none
 -R ../libs libs
 -R . Kstar
-COQDOCFLAGS = "-s --external ../libs libs --external 'http://math-comp.github.io/math-comp/htmldoc/' mathcomp -t 'Constructive Pruning-Based Completeness Proofs for K*' --toc-depth 2 --with-header ../resources/header.html --with-footer ../resources/footer.html --latin1"
+COQDOCFLAGS = "-s --external ../libs libs --external 'http://math-comp.github.io/math-comp/htmldoc/' mathcomp -t 'Constructive Pruning-Based Completeness Proofs for K*' --toc-depth 2 --with-header ../resources/header.html --with-footer ../resources/footer.html --index indexpage"
 Kstar_def.v
 demo.v
 hilbert_ref.v

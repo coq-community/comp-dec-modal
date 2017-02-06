@@ -1,3 +1,6 @@
 [submodule "libs"]
 	path = libs
 	url = ssh://git@redmine.ps.uni-saarland.de/comp-dec-modal-libs.git
+[submodule "resources/coqdocjs"]
+	path = resources/coqdocjs
+	url = https://github.com/tebbi/coqdocjs.git

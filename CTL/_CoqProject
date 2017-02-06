@@ -1,7 +1,7 @@
 -install none
 -R ../libs libs
 -R . CTL
-COQDOCFLAGS = "--external ../libs libs --external 'http://math-comp.github.io/math-comp/htmldoc/' mathcomp -t 'Completeness and Decidability Results for CTL in Coq' --toc-depth 2 -s --with-header ../resources/header.html --with-footer ../resources/footer.html --latin1"
+COQDOCFLAGS = "--external ../libs libs --external 'http://math-comp.github.io/math-comp/htmldoc/' mathcomp -t 'Completeness and Decidability Results for CTL in Coq' --toc-depth 2 -s --with-header ../resources/header.html --with-footer ../resources/footer.html --index indexpage"
 CTL_def.v
 hilbert.v
 dags.v
