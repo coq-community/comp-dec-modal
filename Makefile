@@ -20,7 +20,8 @@ clean:
 	$(MAKE) -C CTL clean
 	$(MAKE) -C Kstar clean
 	$(MAKE) -C K clean
-	rm -rf libs/.*.aux K/.*.aux Kstar/.*.aux CTL/.*.aux
+	rm -rf libs/.*.aux K/.*.aux Kstar/.*.aux CTL/.*.aux \
+	libs/CoqMakefile.conf K/CoqMakefile.conf Kstar/CoqMakefile.conf CTL/CoqMakefile.conf
 
 website: all
 # clear all HTML

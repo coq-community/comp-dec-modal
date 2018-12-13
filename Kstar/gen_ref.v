@@ -180,7 +180,7 @@ Section Pruning.
 
   Lemma coref_S : coref ref S.
   Proof.
-    apply: prune_ind => [C|C S]; first by rewrite inE andbN.
+    apply: prune_myind => [C|C S]; first by rewrite inE andbN.
     case/orP.
     - case/allPn => D. case/fimsetP => t /sepP [inC].
       case: (isDiaP t) inC => // s -> inC _ -> /= nS inS corefS subS0.

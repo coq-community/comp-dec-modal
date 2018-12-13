@@ -131,7 +131,7 @@ Section Prune.
 
   Lemma coref_DD : coref ref DD.
   Proof.
-    apply: prune_ind => [C|C S]; first by rewrite inE andbN.
+    apply: prune_myind => [C|C S]; first by rewrite inE andbN.
     case/or3P.
     - case/hasP => D D1 D2 inS corefS H. apply: corefD1 (corefS).
       apply: R2 (D1) _ => //. apply: R1 D2 => //. apply: ReqU D1. exact: (SsubU H). 

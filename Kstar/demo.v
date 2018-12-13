@@ -198,7 +198,7 @@ Section Pruning.
 
   Lemma coref_DD : coref ref DD.
   Proof.
-    apply: prune_ind => [C|C S]; first by rewrite inE andbN.
+    apply: prune_myind => [C|C S]; first by rewrite inE andbN.
     case/orP.
     - case/allPn. (do 2 case) => // s [//|] inC nS inS corefS subS0.
       apply: corefD1 (corefS). 
