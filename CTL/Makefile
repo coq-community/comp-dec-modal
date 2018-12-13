@@ -22,6 +22,6 @@ graph:
 	dot2tex --codeonly -f tikz -o depend.tex depend.dot
 
 Makefile.coq: _CoqProject
-	coq_makefile -f _CoqProject >Makefile.coq
+	coq_makefile -f _CoqProject -o Makefile.coq
 
 .PHONY: all html gallinahtml clean
