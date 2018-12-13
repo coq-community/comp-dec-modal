@@ -68,7 +68,7 @@ Section Characterizations.
     (forall v, p1 v -> p2 v) -> (forall v, q1 v -> q2 v) ->
     cAR p1 q1 w -> cAR p2 q2 w.
   Proof.
-    move => H1 H2. move: w. cofix => w.
+    move => H1 H2. move: w. cofix AR_strengthen => w.
     case => [ /H1 ? /H2 ?|/H2 ? N]; first exact: AR0.
     apply: ARs => // v wv. apply: AR_strengthen. exact: N.
   Qed.
@@ -77,7 +77,8 @@ Section Characterizations.
     (forall v, p1 v -> p2 v) -> (forall v, q1 v -> q2 v) ->
     cER p1 q1 w -> cER p2 q2 w.
   Proof.
-    move => Hp Hq. move: w. cofix => w. case => [/Hp ? /Hq ?|v V1 V2 V3]; first exact: ER0.
+    move => Hp Hq. move: w. cofix ER_strengthen => w. 
+    case => [/Hp ? /Hq ?|v V1 V2 V3]; first exact: ER0.
     by apply: ERs _ V2 _ ; auto.
   Qed.
 
@@ -365,7 +366,7 @@ Section Decidability.
   Lemma arP w : reflect (cAR e p q w) (ARb w).
   Proof.
     rewrite /ARb; apply (iffP idP).
-    - move: w. cofix => w. rewrite (gfpE AR_mono) !inE. 
+    - move: w. cofix arP => w. rewrite (gfpE AR_mono) !inE. 
       case/orP => /andP [x1 x2]; first exact: AR0. 
       apply: ARs => // v wv. apply: arP. exact: (forall_inP x2). 
     - apply: gfp_ind2 => {w} w X CH. case; first by rewrite !inE; bcase.

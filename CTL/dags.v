@@ -55,7 +55,6 @@ Section GraphTheory.
   Implicit Types (G : graph L) (rG : rGraph L).
 
   Definition erel G := (@edge _ G).
-  Implicit Arguments erel []. (* Why does [Arguements erel G _ _] not work? *)
 
   Definition glocal G := [forall x : G, p (label x) [fset (label y) | y <- fset (edge x)]].
   Definition respects e G := [forall x : G, forall y : G, edge x y ==> e (label x) (label y)].

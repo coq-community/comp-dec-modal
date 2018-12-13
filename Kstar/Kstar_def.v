@@ -36,7 +36,7 @@ Section Characterizations.
     split.
     - move => C v H. apply clos_rt_rt1n in H.
       by elim: H C => [x|x y z xy _ IH]; case => // _ /(_ _ xy).
-    - move: w. cofix => w H. apply: AGs; first by apply H,rt_refl.
+    - move: w. cofix cAG_crt => w H. apply: AGs; first by apply H,rt_refl.
       move => v wv. apply: cAG_crt => v' vv'. apply: H.
       eauto using rt_step, rt_trans.
   Qed.  
@@ -57,7 +57,7 @@ Section Characterizations.
   Lemma AG_strengthen (p1 p2 : X -> Prop) w :
     (forall v, p1 v -> p2 v) -> cAG p1 w -> cAG p2 w.
   Proof.
-    move => H1. move: w. cofix => w. case => [/H1 p2w IH].
+    move => H1. move: w. cofix AG_strengthen => w. case => [/H1 p2w IH].
     by apply: AGs p2w _ => v /IH /AG_strengthen. 
   Qed.
 
@@ -215,7 +215,7 @@ Section Hilbert.
     - by [move => /= *; firstorder].
     - by move => s M w [H ?].
     - by move => s M w [? H].
-    - move => u s _ Hstep _ Hs M. cofix => w /= Hw.
+    - move => u s _ Hstep _ Hs M. cofix soundness => w /= Hw.
       apply: AGs => [|v wv]; first exact: Hs.
       apply: soundness. exact: Hstep wv.
   Qed.
@@ -303,7 +303,7 @@ Section DecidabilityAndAgreement.
   Lemma agP w : reflect (cAG e p w) (AGb w).
   Proof.
     rewrite /AGb; apply (iffP idP).
-    - move: w. cofix => w. rewrite (gfpE AR_mono) !inE. 
+    - move: w. cofix agP => w. rewrite (gfpE AR_mono) !inE. 
       case/andP => [x1 x2].
       apply: AGs _ => [//|v wv]. apply: agP. exact: (forall_inP x2). 
     - apply: gfp_ind2 => {w} w X CH. 

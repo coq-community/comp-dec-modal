@@ -56,7 +56,7 @@ Section Hilbert.
     - move => s t M w /=. exact: AU0.
     - move => s t M w /=. exact: AUs.
     - move => s t u _ IH1 _ IH2.
-      cofix => /= M w H. case (modelP s w) => Hs.
+      cofix soundness => /= M w H. case (modelP s w) => Hs.
       - apply: AR0 Hs _. exact: IH1 H.
       - apply: ARs. exact: IH1 H. move => v wv. apply: soundness.
         exact: IH2 wv.

@@ -128,14 +128,14 @@ Section UniversalModel.
   Lemma UM_trans_R (x y : UM) : trans x y -> suppC (val y) (R (val x)).
   Proof.
     case/hasP => u u1 /andP [u2 /eqP ->].
-    case: (UM_select_correct u1 u2). rewrite suppCU. by bcase.
+    move: (UM_select_correct u1 u2). rewrite suppCU. by bcase.
   Qed.
 
   Lemma UM_trans_D (x : UM) s : fAX s^- \in val x -> exists2 y : UM, trans x y & val y |> s^-.
   Proof.
     move => H. exists (UM_select (fAX s^-) x). 
     - apply/hasP. by exists (fAX s^-) => //=.
-    - case: (UM_select_correct H (erefl _)). by rewrite suppCU suppC1 /=; bcase.
+    - move: (UM_select_correct H (erefl _)). by rewrite suppCU suppC1 /=; bcase.
   Qed.
 
   Lemma supp_eval s (x : UM) : val x |> s -> eval (interp s) x.

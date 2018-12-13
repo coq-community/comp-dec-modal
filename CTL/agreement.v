@@ -65,7 +65,7 @@ Section Agreement.
   Proof. 
     case: (xchoose_rel serial_e) => f Hf. 
     have pth: path e (fun n => iter n f w) by move => m; exact: Hf.
-    move => Hw. case: (Hw (fun n => iter n f w) pth (erefl _) 0); by [case|congruence]. 
+    move => Hw. case: (Hw (fun n => iter n f w) pth (erefl _) 0) => //. by case. 
   Qed.
 
   Lemma pARE2 w v : pAR e p q w -> ~~ p w -> e w v -> pAR e p q v.
@@ -87,7 +87,7 @@ Section Agreement.
       case: IHn => [[m]|]; first by left; exists m => //; exact: ltnW.
       case => [? ?|qn CI]; first by left; exists n.
       right. apply CI. exact: p1.
-    - move: w. cofix => w Hw. 
+    - move: w. cofix arP2 => w Hw. 
       case: (boolP (p w)) => Hp. 
       * apply: AR0. exact: Hp. exact: pARE1.
       * apply: ARs => [|v wv]. exact: pARE1. apply: arP2. exact: pARE2 wv.
@@ -135,7 +135,7 @@ Section Paths.
 
   Lemma dmAU (xm : XM) w : ~ cAU R P Q w -> cER R (PredC P) (PredC Q) w.
   Proof.
-    move: w. cofix => w Hw.
+    move: w. cofix dmAU => w Hw.
     have nQw: (~ Q w). move => c. apply Hw. exact: AU0.
     case: (xm (P w)) => [pw|nPw]; last exact: ER0.
     suff {dmAU} [v v1 v2] : exists2 v, R w v & ~ cAU R P Q v.
@@ -147,7 +147,7 @@ Section Paths.
   Lemma dmAR (xm : XM) w : ~ cAR R P Q w -> cEU R (PredC P) (PredC Q) w.
   Proof.
     move => H. apply: (dn xm) => C. apply: H. 
-    move: w C. cofix => w Hw.
+    move: w C. cofix dmAR => w Hw.
     have Qw : Q w. apply: (dn xm) => H. apply Hw. exact: EU0.
     case: (xm (P w)) => [Pw|nPw]; first exact: AR0.
     apply: ARs Qw _ => v wv. apply: dmAR => C. apply: Hw. exact: EUs C.
@@ -334,7 +334,7 @@ Definition M3 := FModel L3 ser_R3.
 
 Lemma AR3_0 : cAR (@trans M3) (eval (fV 0)) (eval (fV 1)) ord0.
 Proof.
-  cofix. apply: ARs; first done. 
+  cofix AR3_0. apply: ARs; first done. 
   case. case => [|[|n]] i. 
   - suff ->: Ordinal i = ord0. move => _. exact: AR3_0. 
       congr Ordinal. exact: eq_irrelevance.

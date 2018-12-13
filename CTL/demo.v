@@ -617,7 +617,7 @@ Section ModelConstruction.
     - move: (liftE le) => ?;subst. rewrite lift_eq in le.
       suff: false by []. rewrite -(negbTE lf). apply/existsP. by eexists.
     - case/and4P : H => _. destruct p as [u L]. destruct p' as [u' L'].
-      case/eqP => /= ? e; subst. move/eqP => Lx. move: (label_DF lf). rewrite Lx => inDF.
+      move/eqP => /= ? e; subst. move/eqP => Lx. move: (label_DF lf). rewrite Lx => inDF.
       rewrite [SeqSub _ _](_ : _ = L') ?lift_eq //. apply/eqP. destruct L'. exact: eqxx.
   Qed.
 
@@ -714,7 +714,7 @@ Section ModelConstruction.
     - rewrite /= -RE => HR y /MRel_R H. apply: (IHs true).
       rewrite -suppC1 /=. apply: suppC_sub H. by rewrite fsub1.
     - rewrite /=. case/MRel_D => y xy Hy. move => /(_ y xy). exact: (IHs false).
-    - rewrite [supp]lock /= -lock. move: x. cofix => x.
+    - rewrite [supp]lock /= -lock. move: x. cofix supp_eval => x.
       rewrite /=. case/andP => [/IHt A]. case/orP => [/IHs B|B]; first exact: AR0.
       apply: ARs => //= y /MRel_R => H. apply: supp_eval.
       rewrite -suppC1. apply: suppC_sub H. by rewrite fsub1 RE.
@@ -744,7 +744,7 @@ Section ModelConstruction.
       + move/dist0 => -> {u} L Lx. exact: AU_this.
       + move/distS. move/IHn => {IHn} IHn L Lx. apply: AU_lift (Lx) => L' HL'. exact: IHn.
      - move => H /=. apply: cAU_cER. apply: ER_strengthen (IHs false) (IHt false) _ => {IHs IHt}.
-       move: x H. cofix => x. rewrite /= => /andP [Lt]. case/orP => Ls; first exact: ER0.
+       move: x H. cofix supp_eval => x. rewrite /= => /andP [Lt]. case/orP => Ls; first exact: ER0.
        case: (MRel_D Ls) => y xy Ly. apply: ERs xy _. exact: Lt. exact: supp_eval.
   Qed.
 

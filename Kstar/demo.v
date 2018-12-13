@@ -89,7 +89,7 @@ Section ModelExistience.
     - rewrite [_ |> _]/= => H. case/hasP : (demoD1 (ssvalP x) H) => D inS.
       rewrite suppCU suppC1 => /andP [D1 D2] /= /(_ (Sub D inS)) /(_ D2).
       exact: (IHs false).
-    - move: x. cofix => x. rewrite [_ |> _]/= => /andP [X1 X2].
+    - move: x. cofix supp_eval => x. rewrite [_ |> _]/= => /andP [X1 X2].
       apply: AGs => [|y xy]; [exact: IHs X1|apply: supp_eval].
       rewrite -suppC1. apply: suppC_sub xy. by rewrite fsub1 RE.
     - move => H. apply: cAG_cEF. apply: EF_strengthen (IHs false) _. 
