@@ -13,8 +13,8 @@ All files are licensed under the CeCILL-B license. For details refer to the
 LICENSE file.
 
 To compile the development, you need:
-   coq-8.4pl6 or coq 8.5
-   mathcomp-1.6 (only the ssreflect component is required)
+   coq-8.8.2
+   mathcomp-1.7.0 (only the ssreflect component is required)
 
 You can build everything with
 
