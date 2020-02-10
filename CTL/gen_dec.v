@@ -10,7 +10,7 @@ Unset Strict Implicit.
 Import Prenex Implicits.
 
 
-Hint Constructors gen.
+Hint Constructors gen : core.
 
 (** * Decidability of Gentzen Derivability
 
@@ -190,7 +190,7 @@ Section gen_closure.
     exact: RinU.
   Qed.
 
-  Hint Resolve genU_ipl genU_ipr genU_in genU_AXn genU_AUpl genU_AUpr genU_AUnl genU_AUnr genU_AUhl genU_AUhr genU_foc genU_jmp.
+  Hint Resolve genU_ipl genU_ipr genU_in genU_AXn genU_AUpl genU_AUpr genU_AUnl genU_AUnr genU_AUhl genU_AUhr genU_foc genU_jmp : core.
 
   (** ** Part 2: Decidability inside a universe *)
 

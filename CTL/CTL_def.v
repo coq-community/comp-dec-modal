@@ -60,7 +60,7 @@ Section Characterizations.
     (forall v, p1 v -> p2 v) -> (forall v, q1 v -> q2 v) ->
     cAU p1 q1 w -> cAU p2 q2 w.
   Proof.
-    move => H1 H2. elim => {w} w; first by move => ?; apply AU0; auto.
+    move => H1 H2. elim => {w} - w; first by move => ?; apply AU0; auto.
     move => /H1 ? _ IH. apply: AUs ; auto.
   Qed.
 
@@ -86,7 +86,7 @@ Section Characterizations.
     (forall v, p1 v -> p2 v) -> (forall v, q1 v -> q2 v) ->
     cEU p1 q1 w -> cEU p2 q2 w.
   Proof.
-    move => H1 H2. elim => {w} w; first by move => ?; apply EU0; auto.
+    move => H1 H2. elim => {w} - w; first by move => ?; apply EU0; auto.
     move => v /H1 wv ? IH. apply: EUs ; auto.
   Qed.
 
@@ -348,7 +348,7 @@ Section Decidability.
     - move: w. pattern (lfp AU_fun). apply: lfp_ind; first by move => ?; rewrite inE.
       move => X IH w. case/setUP; rewrite !inE; first by move => ?; exact: AU0.
       case/andP => ? A. apply: AUs => // v wv. apply: IH. exact: (forall_inP A).
-    - rewrite (lfpE AU_mono). elim => {w} w; first by rewrite !inE => ->.
+    - rewrite (lfpE AU_mono). elim => {w} - w; first by rewrite !inE => ->.
       move => pw _ /forall_inP IH. by rewrite !inE (lfpE AU_mono) pw IH /=.
    Qed.
 
@@ -369,15 +369,15 @@ Section Decidability.
     - move: w. cofix arP => w. rewrite (gfpE AR_mono) !inE. 
       case/orP => /andP [x1 x2]; first exact: AR0. 
       apply: ARs => // v wv. apply: arP. exact: (forall_inP x2). 
-    - apply: gfp_ind2 => {w} w X CH. case; first by rewrite !inE; bcase.
+    - apply: gfp_ind2 => {w} - w X CH. case; first by rewrite !inE; bcase.
       move => qw H. rewrite inE; rightb; rewrite inE qw /=.
       apply/forall_inP => v /H. exact: CH.
   Qed.
                                 
 End Decidability.
 
-Arguments auP [T e p q w].
-Arguments arP [T e p q w].
+Arguments auP {T e p q w}.
+Arguments arP {T e p q w}.
 
 (** Given decidability for AU and AR, decidability of [eval] follows using a
 simple induction on formulas *)

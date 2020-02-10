@@ -12,7 +12,7 @@ Import Prenex Implicits.
 
 Implicit Types (C D L : clause) (S : {fset clause}).
 
-Arguments prune_sub [T p S].
+Arguments prune_sub {T p S}.
 Prenex Implicits prune_sub.
 
 (** * Pruning *)

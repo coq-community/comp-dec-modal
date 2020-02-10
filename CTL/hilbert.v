@@ -51,7 +51,7 @@ Section Hilbert.
   Proof.
     elim => {s}; try by [move => /= *; firstorder].
     - move => /= s M w H. by case: (modelP s w); firstorder.
-    - move => s t u _ /= IH1 _ IH2 M w. elim => {w} w; first exact: IH1.
+    - move => s t u _ /= IH1 _ IH2 M w. elim => {w} - w; first exact: IH1.
       move => ws H1 H2. exact: IH2.
     - move => s t M w /=. exact: AU0.
     - move => s t M w /=. exact: AUs.

@@ -65,7 +65,7 @@ Section Decidability.
       + move: H. rewrite suppCU suppC1 => /andP[H ?]. exact: fulfillAG1 H.
       + case/andP: H => CD H2. apply: fulfillAGn CD _ => //. by apply IH.
     - case => inS H.
-      elim: H inS => {C} C D Req DinS CD.
+      elim: H inS => {C} - C D Req DinS CD.
       + move => Ds CinS. rewrite fulfillAGE inE CinS andTb.
         apply/andP;split; first exact/allP.
         leftb. apply/hasP; exists D => //. by rewrite suppCU suppC1 /= Ds.
@@ -96,7 +96,7 @@ Section Pruning.
 
   Definition T := [fset C in S0 | [all D in Req C, suppS S D]].
 
-  Arguments prune_sub [T p S].
+  Arguments prune_sub {T p S}.
 
   Lemma prune_D0 : D0 (S `|` T).
   Proof.
@@ -130,9 +130,9 @@ Section Pruning.
   Lemma prune_D2_S C s : C \in S -> fAX (fAG s)^- \in C -> demo.fulfillAG (S `|` T) s C.
   Proof.
     move => inS inC. move: (prune_S_aux inS inC). elim.
-    + move => {C inS inC} C D _ D1 D2 D3.
+    + move => {C inS inC} - C D _ D1 D2 D3.
       apply: demo.fulfillAG1 D2 D3. by rewrite inE D1.
-    + move => {C inS inC} C D _ inS0 CD IH1 IH2.
+    + move => {C inS inC} - C D _ inS0 CD IH1 IH2.
       apply: demo.fulfillAGn CD _ => //.
       apply/fsetUP;right. rewrite inE inS0. apply/allP. 
       apply: (@fulfillAG_Req S0 _ s D). exact/fulfillAGP.

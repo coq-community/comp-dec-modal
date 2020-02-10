@@ -668,7 +668,7 @@ Section ModelConstruction.
     label x |> fAR s t^- -> EU_M s t (Mstate x).
   Proof.
     move => Hnext Lx.
-    move: (sn_edge x) Lx. elim => {x} x _ IH Lx.
+    move: (sn_edge x) Lx. elim => {x} - x _ IH Lx.
     rewrite /= in Lx. case/orP : Lx => [Lx|/andP [L1 L2]]. exact: EU0.
     case: (boolP (leaf x)) => [lf|Hx].
     + apply: leaf_root'. apply: Hnext => //. by rewrite label_root /=; bcase.
@@ -682,7 +682,7 @@ Section ModelConstruction.
     label x |> fAU s t^+ -> AU_M s t (Mstate x).
   Proof.
     move => Hnext Lx.
-    move: (sn_edge x) Lx. elim => {x} x _ IH Lx.
+    move: (sn_edge x) Lx. elim => {x} - x _ IH Lx.
     case: (boolP (leaf x)) => [lf|Hx].
     + apply: leaf_root. apply: Hnext => //. by rewrite label_root.
     + rewrite /= in Lx. case/orP : Lx => [Lx|/andP [L1 L2]]. exact: AU0.
@@ -730,7 +730,7 @@ Section ModelConstruction.
       case: p Lx => u E. move En : (dist Fgt0 u (SeqSub _ inF)) => n.
       elim: n u E En => [|n IHn] u E.
       + move/dist0 => -> {u} L. exact: EU_this. 
-      + move/distS. move/IHn => {IHn} IHn. apply: EU_lift => L'. exact: IHn.
+      + move/distS. move/IHn => {IHn} - IHn. apply: EU_lift => L'. exact: IHn.
     - move => L_x. apply: AU_strengthen (IHs true) (IHt true) _ => {IHs IHt}. change (AU_M s t x).
       case: x L_x => p x Lx. rewrite [tagged _]/= in Lx.
       wlog ? : p x Lx / x = root (Frag p) => [W|]; subst.
@@ -742,7 +742,7 @@ Section ModelConstruction.
       case: p Lx => u. move En : (dist Fgt0 u (SeqSub _ inF)) => n.
       elim: n u En => [|n IHn] u.
       + move/dist0 => -> {u} L Lx. exact: AU_this.
-      + move/distS. move/IHn => {IHn} IHn L Lx. apply: AU_lift (Lx) => L' HL'. exact: IHn.
+      + move/distS. move/IHn => {IHn} - IHn L Lx. apply: AU_lift (Lx) => L' HL'. exact: IHn.
      - move => H /=. apply: cAU_cER. apply: ER_strengthen (IHs false) (IHt false) _ => {IHs IHt}.
        move: x H. cofix supp_eval => x. rewrite /= => /andP [Lt]. case/orP => Ls; first exact: ER0.
        case: (MRel_D Ls) => y xy Ly. apply: ERs xy _. exact: Lt. exact: supp_eval.

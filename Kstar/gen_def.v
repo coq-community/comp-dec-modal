@@ -181,7 +181,7 @@ Proof.
     case: w2 => [_ ws|v wH wv Hv].
     apply: (IH1). exists w. split => //=. by rewrite satC1 w1.
     apply: (IH2). exists w. split => //=. exists v => //. 
-    elim: {w w1 wH wv} Hv => {v} v.
+    elim: {w w1 wH wv} Hv => {v} - v.
       * move => v1 v2. apply: hist0 (v2). rewrite dsatU1 v1 andbT.
         apply/negP => HC. apply IH1. exists v. split => //=. by rewrite satC1 HC.
       * move => u vH vu _ H2. apply: histS (vu) (H2). rewrite dsatU1 vH andbT.

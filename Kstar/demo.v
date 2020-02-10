@@ -10,7 +10,7 @@ Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
 
-Arguments subsep [T X P].
+Arguments subsep {T X P}.
 
 Implicit Types (S cls X Y : {fset clause}) (C D : clause).
 
@@ -52,7 +52,7 @@ Record demo := Demo
 Arguments demoD1 [d C] _ [s] _.
 Arguments demoD2 [d C] _ [s] _.
 
-Canonical demo_predType := mkPredType (fun (S : demo) (C : clause) => nosimpl C \in cls S).
+Canonical demo_predType := PredType (fun (S : demo) (C : clause) => nosimpl C \in cls S).
 
 Lemma LCF (S : demo) C : C \in S ->
   ((fF^+ \in C) = false) * (forall p, (fV p^+ \in C) && (fV p^- \in C) = false).
@@ -67,7 +67,7 @@ Section ModelExistience.
   Variables (S : demo).
 
   Definition Mtype := seq_sub S.
-  Definition Mtrans : rel Mtype := restrict S rtrans.
+  Definition Mtrans : rel Mtype := @restrict _ S rtrans.
   Definition Mlabel (p:var) (C : Mtype) := fV p^+ \in val C.
 
   Definition model_of := FModel Mtrans Mlabel.
@@ -95,7 +95,7 @@ Section ModelExistience.
     - move => H. apply: cAG_cEF. apply: EF_strengthen (IHs false) _. 
       move: H. rewrite [_ |> _]/=. case/orP => [?|]; first exact: EF0.
       move/(demoD2 (ssvalP x)). case: x => C inS supp. rewrite /= in supp.
-      elim: supp inS => {C} C D DinS CD.
+      elim: supp inS => {C} - C D DinS CD.
       + move => Ds inS. apply: (EFs (v := Sub D DinS)) => //. exact: EF0.
       + move => _ IH inS. apply: (EFs (v := Sub D DinS)) => //. exact: IH.
   Qed.
@@ -141,7 +141,7 @@ Section Pruning.
     - move: C. apply: fset.lfp_ind => C X IH /sepP[-> /hasP[D inS] /andP[CD]].
       case/orP => H; split => //; first exact: fulfillAG1 H.
       apply: fulfillAGn CD _ => //. by apply IH.
-    - case => inS H. elim: H inS => {C} C D DinS CD.
+    - case => inS H. elim: H inS => {C} - C D DinS CD.
       + move => Ds CinS. rewrite fulfillAGE inE CinS andTb.
         by apply/hasP; exists D; bcase.
       + move => _ /(_ DinS) HD CinS. rewrite fulfillAGE inE CinS andTb.

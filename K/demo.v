@@ -10,7 +10,7 @@ Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
 
-Arguments subsep [T X P].
+Arguments subsep {T X P}.
 
 Implicit Types (S cls X Y : {fset clause}) (C D : clause).
 
@@ -35,7 +35,7 @@ Record demo := Demo
 Arguments demoD1 [d C] _ [s] _.
 
 
-Canonical demo_predType := mkPredType (fun (S : demo) (C : clause) => nosimpl C \in cls S).
+Canonical demo_predType := PredType (fun (S : demo) (C : clause) => nosimpl C \in cls S).
 
 Lemma LCF C : lcons C ->
   ((fF^+ \in C) = false) * (forall p, (fV p^+ \in C) && (fV p^- \in C) = false).
@@ -52,7 +52,7 @@ Section ModelExistience.
   Variables (S : demo).
 
   Definition Mtype := seq_sub S.
-  Definition Mtrans : rel Mtype := restrict S rtrans.
+  Definition Mtrans : rel Mtype := @restrict _ S rtrans.
   Definition Mlabel (p:var) (C : Mtype) := fV p^+ \in val C.
 
   Definition model_of := FModel Mtrans Mlabel.

@@ -50,7 +50,7 @@ Section Agreement.
         case/andP => _ /existsP [y]. rewrite negb_imply. case/andP => *. exists y. bcase.
       case: (xchoose_rel E) => f Hf.
       pose pi n := iter n f w.
-      have Pe': path [eta e'] pi by move => n; move : (Hf (pi n)).
+      have Pe': path (fun x y => e' x y) pi by move => n; move : (Hf (pi n)).
       suff S k : (exists2 m : nat, m < k & ~ p (pi m)) \/ ~~ AUb (pi k).
         apply: pAU_pER. exists pi. split => // n; first by case/andP : (Hf (pi n)).
         case: (S n); first tauto. 

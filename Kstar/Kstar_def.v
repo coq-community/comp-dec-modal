@@ -64,7 +64,7 @@ Section Characterizations.
   Lemma EF_strengthen (p1 p2 : X -> Prop) w :
     (forall v, p1 v -> p2 v) -> cEF p1 w -> cEF p2 w.
   Proof.
-    move => H1. elim => {w} w; first by move => ?; apply EF0; auto.
+    move => H1. elim => {w} - w; first by move => ?; apply EF0; auto.
     move => v wv ? IH. by apply: EFs ; auto.
   Qed.
   
@@ -306,13 +306,13 @@ Section DecidabilityAndAgreement.
     - move: w. cofix agP => w. rewrite (gfpE AR_mono) !inE. 
       case/andP => [x1 x2].
       apply: AGs _ => [//|v wv]. apply: agP. exact: (forall_inP x2). 
-    - apply: gfp_ind2 => {w} w X CH. 
+    - apply: gfp_ind2 => {w} - w X CH. 
       case => pw H. rewrite inE pw /=. apply/forall_inP => v /H. exact: CH.
   Qed.
                                     
 End DecidabilityAndAgreement.
 
-Arguments agP [T e p w].
+Arguments agP {T e p w}.
 
 (** Given decidability and correctness for AG, decidavility and
 correctness of [evalb] follows using a simple induction on formulas *)
