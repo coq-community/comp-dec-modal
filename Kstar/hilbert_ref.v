@@ -14,6 +14,8 @@ Implicit Types (C D : clause).
 
 (** * Hilbert Refutations *)
 
+Arguments decomp_ab {_ _ _} _.
+
 Section RefPred.
   Variable (F : {fset sform}).
   Hypothesis (sfc_F : sf_closed F).
@@ -49,19 +51,19 @@ Section RefPred.
   Proof with try solve [Lbase1|Lbase3|Lbase4].
     apply: (@supp_aux _ ssub) => /= {C} ; last by move => ?; exact: sf_ssub.
     - move => [[|p|s t|s|s] [|]] //=; try exact: decomp_lit.
-      + apply: (decomp_ab (S0 := [fset [fset s^-]; [fset t^+]])) => /=...
+      + apply: (decomp_ab [fset [fset s^-]; [fset t^+]]) => /=...
         rewrite -[fImp s t]/(s ---> t). rewrite -> (axIO s t).
         rule axOE.
         * rewrite -> af1n. apply: (bigOI xaf). by rewrite !inE eqxx.
         * rewrite -> (af1p t) at 1. apply: (bigOI xaf). by rewrite !inE eqxx.
-      + apply: (decomp_ab (S0 := [fset [fset s^+; t^-]])) => /=...
+      + apply: (decomp_ab [fset [fset s^+; t^-]]) => /=...
         rewrite -[fImp s t]/(s ---> t). rewrite -> dmI.
         rewrite -> (af1p s),(af1n t), <- andU at 1.
         apply: (bigOI xaf). by rewrite inE.
-      + apply: (decomp_ab (S0 := [fset [fset s^+;fAX (fAG s)^+]] )) => /=...
+      + apply: (decomp_ab [fset [fset s^+;fAX (fAG s)^+]]) => /=...
         rewrite -> axAGE at 1. rewrite -> (af1p s),(af1p (AX (AG s))), <- andU at 1.
         apply: (bigOI xaf). by rewrite !inE.
-      + apply: (decomp_ab (S0 := [fset [fset s^-]; [fset fAX (fAG s)^-]] )) => /=...
+      + apply: (decomp_ab [fset [fset s^-]; [fset fAX (fAG s)^-]]) => /=...
         rewrite -> axAGEn. rewrite -> (af1n s),(af1n (AX (AG s))) at 1.
         rule axOE; apply: (bigOI xaf); by rewrite !inE eqxx.
   Qed.
