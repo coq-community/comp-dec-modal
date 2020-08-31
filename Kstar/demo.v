@@ -3,8 +3,10 @@
 Require Import Relations.
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
-From libs Require Import edone bcase fset base sltype.
-Require Import Kstar_def.
+From CompDecModal.libs
+ Require Import edone bcase fset base sltype.
+From CompDecModal.Kstar
+ Require Import Kstar_def.
 
 Set Implicit Arguments.
 Unset Strict Implicit.

@@ -3,7 +3,8 @@
 Require Import Relations Recdef.
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
-From libs Require Import edone bcase fset base.
+From CompDecModal.libs
+ Require Import edone bcase fset base.
 
 Set Implicit Arguments.
 Unset Strict Implicit.

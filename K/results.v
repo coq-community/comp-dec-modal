@@ -2,8 +2,10 @@
 (* Distributed under the terms of the CeCILL-B license                    *)
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
-From libs Require Import edone bcase fset modular_hilbert base sltype.
-Require Import K_def demo hilbert_ref gentzen universal_model.
+From CompDecModal.libs
+ Require Import edone bcase fset modular_hilbert base sltype.
+From CompDecModal.K
+ Require Import K_def demo hilbert_ref gentzen universal_model.
 
 (** * Main Results *)
 

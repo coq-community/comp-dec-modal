@@ -2,8 +2,10 @@
 (* Distributed under the terms of the CeCILL-B license                    *)
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
-From libs Require Import edone bcase fset base.
-Require Import CTL_def.
+From CompDecModal.libs
+ Require Import edone bcase fset base.
+From CompDecModal.CTL
+ Require Import CTL_def.
 
 Set Implicit Arguments.
 Unset Strict Implicit.

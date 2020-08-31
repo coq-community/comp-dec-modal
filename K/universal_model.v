@@ -2,8 +2,10 @@
 (* Distributed under the terms of the CeCILL-B license                    *)
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
-From libs Require Import edone bcase fset base sltype.
-Require Import K_def demo gentzen.
+From CompDecModal.libs
+ Require Import edone bcase fset base sltype.
+From CompDecModal.K
+ Require Import K_def demo gentzen.
 
 Set Implicit Arguments.
 Unset Strict Implicit.

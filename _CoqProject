@@ -1,0 +1,49 @@
+# Suppress harmless compiler warnings we can't do anything about.
+-arg -w -arg -projection-no-head-constant
+-arg -w -arg -notation-overridden
+-arg -w -arg -redundant-canonical-projection
+
+-Q . CompDecModal
+
+# Shared Libs
+libs/bcase.v
+libs/edone.v
+libs/base.v
+libs/fset.v
+libs/fset_tac.v
+libs/induced_sym.v
+libs/modular_hilbert.v
+libs/sltype.v
+
+# K
+K/K_def.v
+K/demo.v
+K/hilbert_ref.v
+K/gentzen.v
+K/universal_model.v
+K/results.v
+
+# Kstar
+Kstar/Kstar_def.v
+Kstar/demo.v
+Kstar/hilbert_ref.v
+Kstar/gen_def.v
+Kstar/gen_ref.v
+Kstar/results.v
+
+# CTL
+CTL/CTL_def.v
+CTL/hilbert.v
+CTL/dags.v
+CTL/demo.v
+CTL/relaxed_pruning.v
+CTL/hilbert_ref.v
+CTL/hilbert_Eme90.v
+CTL/hilbert_LS.v
+CTL/agreement.v
+CTL/gen_def.v
+CTL/hilbert_hist.v
+CTL/gen_hsound.v
+CTL/gen_ref.v
+CTL/gen_dec.v
+CTL/results.v

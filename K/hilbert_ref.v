@@ -3,8 +3,10 @@
 Require Import Lia.
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
-From libs Require Import edone bcase fset base modular_hilbert sltype.
-Require Import K_def demo.
+From CompDecModal.libs
+ Require Import edone bcase fset base modular_hilbert sltype.
+From CompDecModal.K
+ Require Import K_def demo.
 
 Set Implicit Arguments.
 Unset Strict Implicit.

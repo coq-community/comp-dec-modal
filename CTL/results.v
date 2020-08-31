@@ -2,11 +2,13 @@
 (* Distributed under the terms of the CeCILL-B license                    *)
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
-From libs Require Import edone bcase fset base modular_hilbert sltype.
+From CompDecModal.libs
+ Require Import edone bcase fset base modular_hilbert sltype.
 
-Require Import CTL_def dags demo agreement.
-Require Import hilbert hilbert_ref hilbert_LS hilbert_Eme90.
-Require Import gen_def gen_dec gen_hsound gen_ref.
+From CompDecModal.CTL
+ Require Import CTL_def dags demo agreement hilbert hilbert_ref hilbert_LS hilbert_Eme90.
+From CompDecModal.CTL
+ Require Import gen_def gen_dec gen_hsound gen_ref.
 
 (** * Main Results *)
 
