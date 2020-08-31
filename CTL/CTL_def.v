@@ -479,7 +479,7 @@ Definition clause := {fset sform}.
 Definition lcons (L : clause) :=
   (fF^+ \notin L) && [all s in L, if s is fV p^+ then fV p^- \notin L else true].
 
-Fixpoint literal (s : sform) :=
+Definition literal (s : sform) :=
   let: (t,_) := s in
   match t with
     | fV _ => true

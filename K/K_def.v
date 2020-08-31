@@ -257,7 +257,7 @@ Definition lcons (L : clause) :=
 
 (** Literals and Support *)
 
-Fixpoint literal (s : sform) :=
+Definition literal (s : sform) :=
   let: (t,_) := s in
   match t with
     | fV _ => true
