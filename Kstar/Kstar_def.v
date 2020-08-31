@@ -619,7 +619,7 @@ Fixpoint f_size (s : form) :=
     | fAG s => (f_size s).+1
   end.
 
-Require Import Omega.
+Require Import Lia.
 
 Lemma size_ssub (s : form) (b : bool) : size (ssub (s,b)) <= 2 * f_size s.
 Proof. 
@@ -627,9 +627,9 @@ Proof.
     try by rewrite fsetU0 fset1Es.
   - apply: leq_trans (fsizeU1 _ _) _. apply: leq_ltn_trans (fsizeU _ _) _.
     apply: leq_ltn_trans (leq_add (IHs _) (IHt _)) _.
-    apply/leP; rewrite -!(multE,plusE); omega.
+    apply/leP; rewrite -!(multE,plusE); lia.
   - apply: leq_trans (fsizeU1 _ _) _. apply: leq_ltn_trans (IHs _) _.
-    apply/leP; rewrite -!(multE,plusE); omega.
+    apply/leP; rewrite -!(multE,plusE); lia.
   - apply: leq_trans (fsizeU1 _ _) _. apply: leq_ltn_trans (fsizeU1 _ _) _.
     by rewrite mulnS add2n !ltnS.
 Qed.

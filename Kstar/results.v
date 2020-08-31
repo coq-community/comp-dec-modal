@@ -1,6 +1,6 @@
 (* (c) Copyright Christian Doczkal, Saarland University                   *)
 (* Distributed under the terms of the CeCILL-B license                    *)
-Require Import Relations Omega.
+Require Import Relations Lia.
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
 From libs Require Import edone bcase fset base modular_hilbert sltype.

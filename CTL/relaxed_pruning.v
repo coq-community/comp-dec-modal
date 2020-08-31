@@ -1,6 +1,6 @@
 (* (c) Copyright Christian Doczkal, Saarland University                   *)
 (* Distributed under the terms of the CeCILL-B license                    *)
-Require Import Omega.
+Require Import Lia.
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
 From libs Require Import edone bcase fset base sltype.

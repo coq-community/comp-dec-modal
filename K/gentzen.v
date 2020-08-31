@@ -1,6 +1,6 @@
 (* (c) Copyright Christian Doczkal, Saarland University                   *)
 (* Distributed under the terms of the CeCILL-B license                    *)
-Require Import Omega.
+Require Import Lia.
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
 From libs Require Import edone bcase fset base modular_hilbert sltype.
@@ -68,7 +68,7 @@ Section RefPred.
   Qed.
 
   Ltac Lsupp1 := by rewrite /= ?fsubUset !fsub1 !inE // !ssub_refl.
-  Ltac Lsupp2 := rewrite /weight /= ?fsumU !fsum1 /= /sltype.f_weight /= -?(plusE,minusE); apply/leP; omega.
+  Ltac Lsupp2 := rewrite /weight /= ?fsumU !fsum1 /= /sltype.f_weight /= -?(plusE,minusE); apply/leP; lia.
   Ltac Lsupp3 := move => L; rewrite /= ?suppCU !suppC1 /=; by bcase.
 
   Lemma ref_R0 C : C \in U -> (forall D, D \in base S0 C -> gen D) -> gen C.
