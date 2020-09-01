@@ -1,0 +1,29 @@
+GLOBFILES = $(VFILES:.v=.glob)
+COQDOCJS_DIR ?= resources/coqdocjs
+EXTRA_DIR = $(COQDOCJS_DIR)/extra
+HEADER = $(EXTRA_DIR)/header.html
+FOOTER = $(EXTRA_DIR)/footer.html
+RESOURCES = $(EXTRA_DIR)/resources
+
+VERSION ?= current
+PREFIX = $(COQMF_INSTALLCOQDOCROOT)
+
+DOCDIR = docs
+COQDOCDIR = $(DOCDIR)/coqdoc
+
+COQDOCHTMLFLAGS = --toc -s --external 'http://math-comp.github.io/htmldoc/' mathcomp --html \
+  --with-header $(HEADER) --with-footer $(FOOTER) --index indexpage --parse-comments
+
+coqdoc: $(GLOBFILES) $(VFILES) $(HEADER) $(FOOTER) $(RESOURCES)
+	$(SHOW)'COQDOC -d $(COQDOCDIR)'
+	$(HIDE)mkdir -p $(COQDOCDIR)
+	$(HIDE)$(COQDOC) $(COQDOCHTMLFLAGS) $(COQDOCLIBS) -d $(COQDOCDIR) $(VFILES)
+	$(SHOW)'COPY extra'
+	$(HIDE)cp $(RESOURCES)/* $(COQDOCDIR)
+	patch $(COQDOCDIR)/toc.html resources/toc.patch
+.PHONY: coqdoc
+
+clean::
+	$(HIDE)rm -rf $(DOCDIR)
+
+

@@ -1,0 +1,40 @@
+--- docs/coqdoc/toc.html	2020-09-01 17:34:01.260979926 +0200
++++ docs/coqdoc/mytoc.html	2020-09-01 17:48:19.650261896 +0200
+@@ -26,6 +26,7 @@
+     <div id="content" tabindex="-1" onblur="document.getElementById('content').focus()">
+     <div id="main">
+ <div id="toc">
++<h2> Shared Libraries</h2>
+ <ul class="doclist">
+ <li><a href="CompDecModal.libs.bcase.html#lab1">A simple checker for boolean tautologies</a>
+ 
+@@ -139,6 +140,9 @@
+ <li><a href="CompDecModal.libs.sltype.html#lab34">Generic Lemmas for Literals and Support</a>
+ 
+ </li>
++</ul>
++<h2>Basic Modal Logic K</h2>
++<ul>
+ <li><a href="CompDecModal.K.K_def.html#lab35">K in Coq</a>
+ <ul class="doclist">
+ <li><a href="CompDecModal.K.K_def.html#lab36">Formulas</a>
+@@ -226,6 +230,9 @@
+ <li><a href="CompDecModal.K.results.html#lab59">Main Results</a>
+ 
+ </li>
++</ul>
++<h2>Modal Logic with Transitive Closure</h2>
++<ul>
+ <li><a href="CompDecModal.Kstar.Kstar_def.html#lab60">K* in Coq</a>
+ <ul class="doclist">
+ <li><a href="CompDecModal.Kstar.Kstar_def.html#lab61">Inductive Characterizations</a>
+@@ -319,6 +326,9 @@
+ <li><a href="CompDecModal.Kstar.results.html#lab86">Main Results</a>
+ 
+ </li>
++</ul>
++<h2>Computation Tree Logic</h2>
++<ul>
+ <li><a href="CompDecModal.CTL.CTL_def.html#lab87">CTL in Coq</a>
+ <ul class="doclist">
+ <li><a href="CompDecModal.CTL.CTL_def.html#lab88">Inductive Characterizations</a>
