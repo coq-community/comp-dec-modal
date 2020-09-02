@@ -990,7 +990,8 @@ Section GreatestFixpoint.
   Variables (T : choiceType) (U : {fset T}) (F : {fset T} -> {fset T}).
   Hypothesis (F_mono : monotone F) (F_bound : bounded U F).
 
-  Local Notation "~` A" := (U `\` A).
+  (* level/associativity to be compatible with order.v *)
+  Local Notation "~` A" := (U `\` A) (at level 35, right associativity).
 
   Let F' A := ~` (F (~` A)).
 
