@@ -1,0 +1,36 @@
+opam-version: "2.0"
+maintainer: "christian.doczkal@inria.fr"
+version: "dev"
+
+homepage: "https://github.com/coq-community/comp-dec-modal"
+dev-repo: "git+https://github.com/coq-community/comp-dec-modal.git"
+bug-reports: "https://github.com/coq-community/comp-dec-modal/issues"
+doc: "https://coq-community.github.io/comp-dec-modal/"
+license: "CECILL-B"
+
+synopsis: "Formal and constructiive proofs of soundness and completeness for various calculi for the logics K,K*, and CTL."
+description: """
+Coq Formalization to 
+
+  A Machine-Checked Constructive Metatheory of
+  Computation Tree Logic"""
+
+build: [make "-j%{jobs}%" ]
+install: [make "install"]
+depends: [
+  "coq" {(>= "8.10" & < "8.13~") | (= "dev")}
+  "coq-mathcomp-ssreflect" {(>= "1.9" & < "1.12~") | (= "dev")}
+]
+
+tags: [
+  "category:Computer Science/Modal Logic"
+  "keyword:modal logic"
+  "keyword:completeness"
+  "keyword:decidability"
+  "keyword:Hilbert system"
+  "keyword:computation tree logic"
+  "logpath:CompDecModal"
+]
+authors: [
+  "Christian Doczkal"
+]
