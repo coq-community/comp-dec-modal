@@ -1,6 +1,3 @@
-[submodule "libs"]
-	path = libs
-	url = git@github.com:chdoc/comp-dec-modal-libs.git
 [submodule "resources/coqdocjs"]
 	path = resources/coqdocjs
 	url = https://github.com/tebbi/coqdocjs.git
