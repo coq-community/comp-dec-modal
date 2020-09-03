@@ -14,6 +14,7 @@ libs/fset_tac.v
 libs/induced_sym.v
 libs/modular_hilbert.v
 libs/sltype.v
+libs/rewrite_inequality.v
 
 # K
 K/K_def.v
@@ -47,3 +48,14 @@ CTL/gen_hsound.v
 CTL/gen_ref.v
 CTL/gen_dec.v
 CTL/results.v
+
+# PDL
+PDL/PDL_def.v
+PDL/demo.v
+PDL/hilbert_ref.v
+
+# CPDL
+CPDL/PDL_def.v
+CPDL/demo.v
+CPDL/hilbert_ref.v
+
