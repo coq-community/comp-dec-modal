@@ -8,12 +8,12 @@ bug-reports: "https://github.com/coq-community/comp-dec-modal/issues"
 doc: "https://coq-community.github.io/comp-dec-modal/"
 license: "CECILL-B"
 
-synopsis: "Formal and constructiive proofs of soundness and completeness for various calculi for the logics K,K*, and CTL."
+synopsis: "Constructive proofs of soundness and completeness for K,K*, CTL, PDL, and PDL with converse."
 description: """
-Coq Formalization to 
-
-  A Machine-Checked Constructive Metatheory of
-  Computation Tree Logic"""
+Machine-checked constructive proofs of soundness and completeness
+for Hilbert axiomatizations and sequent calculi for the logics K,
+K*, CTL, as well as the axiomatizations of PDL, with and without
+converse."""
 
 build: [make "-j%{jobs}%" ]
 install: [make "install"]
@@ -29,6 +29,7 @@ tags: [
   "keyword:decidability"
   "keyword:Hilbert system"
   "keyword:computation tree logic"
+  "keyword:propositional dynamic logic"
   "logpath:CompDecModal"
 ]
 authors: [

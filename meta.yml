@@ -1,0 +1,96 @@
+---
+fullname: Completeness and Decidability of Modal Logic Calculi
+shortname: comp-dec-modal
+organization: coq-community
+community: true
+travis: true
+coqdoc: true
+doi: doi:10.22028/D291-26649
+
+synopsis: >-
+  Constructive proofs of soundness and completeness for K,K*, CTL, PDL, and PDL with converse.
+
+description: |-
+  Machine-checked constructive proofs of soundness and completeness
+  for Hilbert axiomatizations and sequent calculi for the logics K,
+  K*, CTL, as well as the axiomatizations of PDL, with and without
+  converse.
+
+publications:
+- pub_title: A Machine-Checked Constructive Metatheory of Computation Tree Logic
+  pub_url: https://www.ps.uni-saarland.de/static/doczkal-diss/index.php
+  pub_doi: doi:10.22028/D291-26649
+- pub_title: Completeness and decidability of converse PDL in the constructive type theory of Coq
+  pub_url: https://hal.archives-ouvertes.fr/hal-01646782/
+  pub_doi: https://doi.org/10.1145/3167088
+    
+authors:
+- name: Christian Doczkal
+  initial: true
+
+maintainers:
+- name: Christian Doczkal
+  nickname: chdoc
+
+opam-file-maintainer: christian.doczkal@inria.fr
+
+opam-file-version: dev
+
+license:
+  fullname: CeCILL-B
+  identifier: CECILL-B
+
+supported_coq_versions:
+  text: 8.10 or later
+  opam: '{(>= "8.10" & < "8.13~") | (= "dev")}'
+
+tested_coq_opam_versions:
+- version: 'coq-dev'
+  repo: 'mathcomp/mathcomp-dev'
+- version: '1.11.0-coq-8.12'
+  repo: 'mathcomp/mathcomp'
+- version: '1.10.0-coq-8.11'
+  repo: 'mathcomp/mathcomp'
+- version: '1.9.0-coq-8.10'
+  repo: 'mathcomp/mathcomp'
+    
+dependencies:
+- opam:
+    name: coq-mathcomp-ssreflect
+    version: '{(>= "1.9" & < "1.12~") | (= "dev")}'
+  nix: ssreflect
+  description: |-
+    [MathComp](https://math-comp.github.io) 1.9.0 or later (`ssreflect` suffices)
+
+namespace: CompDecModal
+
+keywords:
+- name: modal logic
+- name: completeness
+- name: decidability
+- name: Hilbert system
+- name: computation tree logic
+- name: propositional dynamic logic
+
+categories:
+- name: Computer Science/Modal Logic
+
+documentation: |-
+  ## Documentation
+  
+  The developments for the individual logics are described in the
+  publications listed above. The developments on K, K*, and CTL are
+  described in the author's PhD thesis titled "A Machine-Checked
+  Constructive Metatheory of Computation Tree Logic". The developments
+  on PDL and PDL with converse are described in the CPP'18 paper.
+
+  ### Structure
+
+  - The directory `libs` contains infrastructure shared between the
+    developments. This includes:
+    - `fset.v`: a library for finite sets over types with a choice operator (a precursor of [finmap](https://github.com/math-comp/finmap)).
+    - `fset_tac.v`: rudimentary automation for the above (originally implemented by [Alexander Anisimov](https://www.ps.uni-saarland.de/~anisimov/bachelor.php)).
+    - `modular_hilbert.v`: a library for constructing proofs in Hilbert axiomatizations for modal logics.
+    - `sltype.v`: generic lemmas for alpha/beta decomposition of modal-logic formulas.
+  - the remaining directories contain the formalizations for the respective logics.
+---
