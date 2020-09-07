@@ -1,5 +1,5 @@
---- docs/coqdoc/toc.html	2020-09-01 17:34:01.260979926 +0200
-+++ docs/coqdoc/mytoc.html	2020-09-01 17:48:19.650261896 +0200
+--- docs/coqdoc/toc.html	2020-09-07 11:32:26.431245967 +0200
++++ docs/coqdoc/newtoc.html	2020-09-07 11:31:32.491267885 +0200
 @@ -26,6 +26,7 @@
      <div id="content" tabindex="-1" onblur="document.getElementById('content').focus()">
      <div id="main">
@@ -38,3 +38,23 @@
  <li><a href="CompDecModal.CTL.CTL_def.html#lab87">CTL in Coq</a>
  <ul class="doclist">
  <li><a href="CompDecModal.CTL.CTL_def.html#lab88">Inductive Characterizations</a>
+@@ -504,6 +514,9 @@
+ <li><a href="CompDecModal.CTL.results.html#lab139">Main Results</a>
+ 
+ </li>
++</ul>
++<h2>Propositional Dynamic Logic</h2>
++<ul>
+ <li><a href="CompDecModal.PDL.PDL_def.html#lab140">PDL in Coq</a>
+ <ul class="doclist">
+ <li><a href="CompDecModal.PDL.PDL_def.html#lab141">Formulas</a>
+@@ -578,6 +591,9 @@
+ </ul>
+ 
+ </li>
++</ul>
++<h2>Propositional Dynamic Logic with Converse</h2>
++<ul>
+ <li><a href="CompDecModal.CPDL.PDL_def.html#lab162">CPDL in Coq</a>
+ <ul class="doclist">
+ <li><a href="CompDecModal.CPDL.PDL_def.html#lab163">Formulas</a>
