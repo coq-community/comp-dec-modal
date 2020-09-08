@@ -8,7 +8,7 @@ bug-reports: "https://github.com/coq-community/comp-dec-modal/issues"
 doc: "https://coq-community.github.io/comp-dec-modal/"
 license: "CECILL-B"
 
-synopsis: "Constructive proofs of soundness and completeness for K,K*, CTL, PDL, and PDL with converse."
+synopsis: "Constructive proofs of soundness and completeness for K, K*, CTL, PDL, and PDL with converse"
 description: """
 Machine-checked constructive proofs of soundness and completeness
 for Hilbert axiomatizations and sequent calculi for the logics K,

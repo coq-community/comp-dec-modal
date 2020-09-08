@@ -22,8 +22,8 @@
 [coqdoc-shield]: https://img.shields.io/badge/docs-coqdoc-blue.svg
 [coqdoc-link]: https://coq-community.org/comp-dec-modal
 
-[doi-shield]: https://zenodo.org/badge/DOI/doi:10.22028/D291-26649.svg
-[doi-link]: https://doi.org/doi:10.22028/D291-26649
+[doi-shield]: https://zenodo.org/badge/DOI/10.22028/D291-26649.svg
+[doi-link]: https://doi.org/10.22028/D291-26649
 
 Machine-checked constructive proofs of soundness and completeness
 for Hilbert axiomatizations and sequent calculi for the logics K,
@@ -42,8 +42,8 @@ converse.
   - [MathComp](https://math-comp.github.io) 1.9.0 or later (`ssreflect` suffices)
 - Coq namespace: `CompDecModal`
 - Related publication(s):
-  - [A Machine-Checked Constructive Metatheory of Computation Tree Logic](https://www.ps.uni-saarland.de/static/doczkal-diss/index.php) doi:[doi:10.22028/D291-26649](https://doi.org/doi:10.22028/D291-26649)
-  - [Completeness and decidability of converse PDL in the constructive type theory of Coq](https://hal.archives-ouvertes.fr/hal-01646782/) doi:[https://doi.org/10.1145/3167088](https://doi.org/https://doi.org/10.1145/3167088)
+  - [A Machine-Checked Constructive Metatheory of Computation Tree Logic](https://www.ps.uni-saarland.de/static/doczkal-diss/index.php) doi:[10.22028/D291-26649](https://doi.org/10.22028/D291-26649)
+  - [Completeness and decidability of converse PDL in the constructive type theory of Coq](https://hal.archives-ouvertes.fr/hal-01646782/) doi:[10.1145/3167088](https://doi.org/10.1145/3167088)
 
 ## Building and installation instructions
 
