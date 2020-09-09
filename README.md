@@ -25,10 +25,21 @@
 [doi-shield]: https://zenodo.org/badge/DOI/10.22028/D291-26649.svg
 [doi-link]: https://doi.org/10.22028/D291-26649
 
-Machine-checked constructive proofs of soundness and completeness
-for Hilbert axiomatizations and sequent calculi for the logics K,
-K*, CTL, as well as the axiomatizations of PDL, with and without
-converse.
+This project presents machine-checked constructive proofs of
+soundness, completeness, decidability, and the small-model property
+for the logics K, K*, CTL, and PDL (with and without converse).
+
+For all considered logics, we prove soundness and completeness of
+their respective Hilbert-style axiomatization. For K, K*, and CTL,
+we also prove soundness and completeness for Gentzen systems (i.e.,
+sequent calculi).
+
+For each logic, the central construction is a pruning-based
+algorithm computing for a given formula either a satisfying model of
+bounded size or a proof of its negation. The completeness and
+decidability results then follow with soundness from the existence
+of said algorithm.
+  
 
 ## Meta
 
