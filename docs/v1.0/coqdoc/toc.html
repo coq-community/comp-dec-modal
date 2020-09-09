@@ -1,0 +1,683 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<link href="coqdocjs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="coqdocjs.js"></script>
+</head>
+
+<body onload="document.getElementById('content').focus()">
+  <div id="header">
+    <span class="left">
+      <span class="modulename"> <script> document.write(document.title) </script> </span>
+    </span>
+
+    <span class="button" id="toggle-proofs"></span>
+
+    <span class="right">
+      <a href="../">Project Page</a>
+      <a href="./indexpage.html"> Index </a>
+      <a href="./toc.html"> Table of Contents </a>
+    </span>
+</div>
+    <div id="content" tabindex="-1" onblur="document.getElementById('content').focus()">
+    <div id="main">
+<div id="toc">
+<h2> Shared Libraries</h2>
+<ul class="doclist">
+<li><a href="CompDecModal.libs.bcase.html#lab1">A simple checker for boolean tautologies</a>
+
+</li>
+<li><a href="CompDecModal.libs.edone.html#lab2">A slightly more powerful done tactic</a>
+
+</li>
+<li><a href="CompDecModal.libs.base.html#lab3">Generic Lemmas not in Ssreflect</a>
+<ul class="doclist">
+<li><a href="CompDecModal.libs.base.html#lab4">A least- and greatest fixpoints for finite types</a>
+
+</li>
+<li><a href="CompDecModal.libs.base.html#lab5">Cyclic directed distance</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab6">Finite Sets over choice types and countable types</a>
+<ul class="doclist">
+<li><a href="CompDecModal.libs.fset.html#lab7">Primitive operations</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab8">Notations</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab9">Basic Theory</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab10">Subset</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab11">Big Unions</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab12">Cardinality / Size</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab13">Weight function for sets</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab14">Fixpoints</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab15">Reachability withing a set</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab16">Maximal extensions</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab17">Pruning</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset.html#lab18">Rudimentary Automation</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.libs.fset_tac.html#lab19">Automation for finite Sets</a>
+<ul class="doclist">
+<li><a href="CompDecModal.libs.fset_tac.html#lab20">Tableau rules</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset_tac.html#lab21">Implementation of the Tactic</a>
+
+</li>
+<li><a href="CompDecModal.libs.fset_tac.html#lab22">User-level Tactics</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.libs.induced_sym.html#lab23">Induced Symmetric Subrelations</a>
+
+</li>
+<li><a href="CompDecModal.libs.modular_hilbert.html#lab24">A Modular Library for Reasoing in Hilbert Systems</a>
+<ul class="doclist">
+<li><a href="CompDecModal.libs.modular_hilbert.html#lab25">Minimal Logic</a>
+
+</li>
+<li><a href="CompDecModal.libs.modular_hilbert.html#lab26">Propositional Logic</a>
+<ul class="doclist">
+<li><a href="CompDecModal.libs.modular_hilbert.html#lab27">Basic Propositional Logic Facts</a>
+
+</li>
+<li><a href="CompDecModal.libs.modular_hilbert.html#lab28">Equivalence (Experimental)</a>
+
+</li>
+<li><a href="CompDecModal.libs.modular_hilbert.html#lab29">Big Boolean Operators</a>
+
+</li>
+<li><a href="CompDecModal.libs.modular_hilbert.html#lab30">Remaining Propostional Logic Facts</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.libs.modular_hilbert.html#lab31">Basic Modal Logic</a>
+
+</li>
+<li><a href="CompDecModal.libs.modular_hilbert.html#lab32">K*</a>
+
+</li>
+<li><a href="CompDecModal.libs.modular_hilbert.html#lab33">CTL</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.libs.sltype.html#lab34">Generic Lemmas for Literals and Support</a>
+
+</li>
+</ul>
+<h2>Basic Modal Logic K</h2>
+<ul>
+<li><a href="CompDecModal.K.K_def.html#lab35">K in Coq</a>
+<ul class="doclist">
+<li><a href="CompDecModal.K.K_def.html#lab36">Formulas</a>
+
+</li>
+<li><a href="CompDecModal.K.K_def.html#lab37">Models</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.K.K_def.html#lab38">Hilbert System</a>
+<ul class="doclist">
+<li><a href="CompDecModal.K.K_def.html#lab39">Soundness</a>
+
+</li>
+<li><a href="CompDecModal.K.K_def.html#lab40">Finite Models</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.K.K_def.html#lab41">Signed Formulas, Clauses, and Support</a>
+<ul class="doclist">
+<li><a href="CompDecModal.K.K_def.html#lab42">Signed Formulas</a>
+
+</li>
+<li><a href="CompDecModal.K.K_def.html#lab43">Clauses and Support</a>
+
+</li>
+<li><a href="CompDecModal.K.K_def.html#lab44">Request</a>
+
+</li>
+<li><a href="CompDecModal.K.K_def.html#lab45">Subformula Closure</a>
+
+</li>
+<li><a href="CompDecModal.K.K_def.html#lab46">Size of Subformula Universes</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.K.demo.html#lab47">Demos</a>
+<ul class="doclist">
+<li><a href="CompDecModal.K.demo.html#lab48">Model Existence</a>
+
+</li>
+<li><a href="CompDecModal.K.demo.html#lab49">Pruning</a>
+
+</li>
+<li><a href="CompDecModal.K.demo.html#lab50">Refutation Predicates and corefutability of the pruning demo</a>
+
+</li>
+<li><a href="CompDecModal.K.demo.html#lab51">Refutation Completeness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.K.hilbert_ref.html#lab52">Hilbert Refutations</a>
+<ul class="doclist">
+<li><a href="CompDecModal.K.hilbert_ref.html#lab53">Completeness</a>
+
+</li>
+<li><a href="CompDecModal.K.hilbert_ref.html#lab54">Small Model Theorem</a>
+
+</li>
+<li><a href="CompDecModal.K.hilbert_ref.html#lab55">Canonicity of pruning demo</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.K.gentzen.html#lab56">Gentzen System for K</a>
+<ul class="doclist">
+<li><a href="CompDecModal.K.gentzen.html#lab57">Refutation Completeness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.K.universal_model.html#lab58">Construction of a Universal Model</a>
+
+</li>
+<li><a href="CompDecModal.K.results.html#lab59">Main Results</a>
+
+</li>
+</ul>
+<h2>Modal Logic with Transitive Closure</h2>
+<ul>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab60">K* in Coq</a>
+<ul class="doclist">
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab61">Inductive Characterizations</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab62">Formulas</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab63">Models</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab64">Hilbert System</a>
+<ul class="doclist">
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab65">Soundness</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab66">Equivalence to Segerberg style Hilbert system</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab67">Soundness for Finite Models</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab68">Clauses and Support</a>
+<ul class="doclist">
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab69">Signed Formulas</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab70">Clauses and Support</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab71">Request</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab72">Subformula Closure</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.Kstar_def.html#lab73">Associtated Formuals</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.Kstar.demo.html#lab74">Demos</a>
+<ul class="doclist">
+<li><a href="CompDecModal.Kstar.demo.html#lab75">Model Existence</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.demo.html#lab76">Pruning</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.demo.html#lab77">Refutation Predicates and corefutability of the pruning demo</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.demo.html#lab78">Refutation Correctness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.Kstar.hilbert_ref.html#lab79">Hilbert Refutations</a>
+<ul class="doclist">
+<li><a href="CompDecModal.Kstar.hilbert_ref.html#lab80">Completeness</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.hilbert_ref.html#lab81">Small Model Theorem</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.Kstar.gen_def.html#lab82">History-based Gentzen system for K*</a>
+<ul class="doclist">
+<li><a href="CompDecModal.Kstar.gen_def.html#lab83">Soundness for Finite Models</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.gen_ref.html#lab84">Refutation Predicates and corefutability of the pruning demo</a>
+
+</li>
+<li><a href="CompDecModal.Kstar.gen_ref.html#lab85">Refutation Completeness for History-Free Clauses</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.Kstar.results.html#lab86">Main Results</a>
+
+</li>
+</ul>
+<h2>Computation Tree Logic</h2>
+<ul>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab87">CTL in Coq</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.CTL_def.html#lab88">Inductive Characterizations</a>
+
+</li>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab89">Path Characterizations</a>
+
+</li>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab90">Formulas</a>
+
+</li>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab91">Models</a>
+
+</li>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab92">Satisfaction for inductuvice and path semantics</a>
+
+</li>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab93">Finite Models</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab94">Clauses and Support</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.CTL_def.html#lab95">Signed Formulas</a>
+
+</li>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab96">Clauses and Support</a>
+
+</li>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab97">Request</a>
+
+</li>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab98">Subformula Universes</a>
+
+</li>
+<li><a href="CompDecModal.CTL.CTL_def.html#lab99">Size</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.hilbert.html#lab100">Hilbert System for CTL</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.hilbert.html#lab101">Soundness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.dags.html#lab102">Directed Acyclic Graphs</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.dags.html#lab103">Termination and Transitive Closure</a>
+
+</li>
+<li><a href="CompDecModal.CTL.dags.html#lab104">Finite Rooted Labeled Graphs</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.demo.html#lab105">Relaxed Demos</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.demo.html#lab106">Relaxed Fulfillment</a>
+
+</li>
+<li><a href="CompDecModal.CTL.demo.html#lab107">Fragment Demos</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.demo.html#lab108">Model Construction</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.demo.html#lab109">Relaxed Fullfillment to Fragments</a>
+
+</li>
+<li><a href="CompDecModal.CTL.demo.html#lab110">Fragments to Models</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.relaxed_pruning.html#lab111">Pruning</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.relaxed_pruning.html#lab112">Pruning yields a demo</a>
+
+</li>
+<li><a href="CompDecModal.CTL.relaxed_pruning.html#lab113">Refutation Calculus</a>
+
+</li>
+<li><a href="CompDecModal.CTL.relaxed_pruning.html#lab114">Refutation Completeness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.hilbert_ref.html#lab115">Completeness of the Hilbert system</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.hilbert_ref.html#lab116">Pruning refutations to Hilbert Refutations</a>
+
+</li>
+<li><a href="CompDecModal.CTL.hilbert_ref.html#lab117">Informative Completeness and Corollaries</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.hilbert_Eme90.html#lab118">Emerson's Axiomatization</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.hilbert_Eme90.html#lab119">Completeness</a>
+
+</li>
+<li><a href="CompDecModal.CTL.hilbert_Eme90.html#lab120">Soundness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.hilbert_LS.html#lab121">Axiomatization of Lange and Stirling</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.hilbert_LS.html#lab122">Completeness</a>
+
+</li>
+<li><a href="CompDecModal.CTL.hilbert_LS.html#lab123">Soundness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.agreement.html#lab124">Agreement of Paths Semantics and Inductive Semantics</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.agreement.html#lab125">Agreement on Finite Models</a>
+
+</li>
+<li><a href="CompDecModal.CTL.agreement.html#lab126">Agreement on General Models</a>
+
+</li>
+<li><a href="CompDecModal.CTL.agreement.html#lab127">Soundness of Hilbert System for Path Semantics and General Models</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.agreement.html#lab128">Agreement with Disjunctive Release implies LPO</a>
+
+</li>
+<li><a href="CompDecModal.CTL.gen_def.html#lab129">History-Based Gentzen System for CTL</a>
+
+</li>
+<li><a href="CompDecModal.CTL.hilbert_hist.html#lab130">Translation of History Rules to Hilbert Refutations</a>
+
+</li>
+<li><a href="CompDecModal.CTL.gen_hsound.html#lab131">Translation from Gentzen derivations to Hilbert Refutations</a>
+
+</li>
+<li><a href="CompDecModal.CTL.gen_ref.html#lab132">Completeness of the Gentzen System</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.gen_ref.html#lab133">Pruning Refutations to Gentzen derivations</a>
+
+</li>
+<li><a href="CompDecModal.CTL.gen_ref.html#lab134">Completeness Theorem</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.gen_dec.html#lab135">Decidability of Gentzen Derivability</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CTL.gen_dec.html#lab136">Part 1: Syntactic Universe</a>
+
+</li>
+<li><a href="CompDecModal.CTL.gen_dec.html#lab137">Part 2: Decidability inside a universe</a>
+
+</li>
+<li><a href="CompDecModal.CTL.gen_dec.html#lab138">Part 3: Existence of universes for all clauses</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CTL.results.html#lab139">Main Results</a>
+
+</li>
+</ul>
+<h2>Propositional Dynamic Logic</h2>
+<ul>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab140">PDL in Coq</a>
+<ul class="doclist">
+<li><a href="CompDecModal.PDL.PDL_def.html#lab141">Formulas</a>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab142">Models</a>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab143">Satisfaction relation</a>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab144">Axiomatization</a>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab145">Soundness</a>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab146">Segerberg formulation</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab147">Subformula Universes</a>
+<ul class="doclist">
+<li><a href="CompDecModal.PDL.PDL_def.html#lab148">Fischer Ladner Closure</a>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab149">Signed Formulas</a>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab150">Subformula Universes</a>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab151">Hintikka Sets</a>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab152">Request</a>
+
+</li>
+<li><a href="CompDecModal.PDL.PDL_def.html#lab153">Associated Formuals</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.PDL.demo.html#lab154">Demos</a>
+<ul class="doclist">
+<li><a href="CompDecModal.PDL.demo.html#lab155">Demo Theorem</a>
+
+</li>
+<li><a href="CompDecModal.PDL.demo.html#lab156">Pruning</a>
+
+</li>
+<li><a href="CompDecModal.PDL.demo.html#lab157">Pruning Refutations</a>
+
+</li>
+<li><a href="CompDecModal.PDL.demo.html#lab158">Pruning Completeness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.PDL.hilbert_ref.html#lab159">Hilbert Refutations</a>
+<ul class="doclist">
+<li><a href="CompDecModal.PDL.hilbert_ref.html#lab160">Completeness</a>
+
+</li>
+<li><a href="CompDecModal.PDL.hilbert_ref.html#lab161">Main Results</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+<h2>Propositional Dynamic Logic with Converse</h2>
+<ul>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab162">CPDL in Coq</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab163">Formulas</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab164">Models</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab165">Satisfaction relation</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab166">Axiomatization</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab167">Soundness</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab168">Segerberg formulation</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab169">Subformula Universes</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab170">Fischer Ladner Closure</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab171">Signed Formulas</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab172">Subformula Universes</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab173">Hintikka Sets</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab174">Request</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab175">Associated Formuals</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CPDL.PDL_def.html#lab176">Converse Normalization</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.demo.html#lab177">Demos</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CPDL.demo.html#lab178">Demo Theorem</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.demo.html#lab179">Pruning</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.demo.html#lab180">Pruning Refutations</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.demo.html#lab181">Pruning Completeness</a>
+
+</li>
+</ul>
+
+</li>
+<li><a href="CompDecModal.CPDL.hilbert_ref.html#lab182">Hilbert Refutations</a>
+<ul class="doclist">
+<li><a href="CompDecModal.CPDL.hilbert_ref.html#lab183">Completeness</a>
+
+</li>
+<li><a href="CompDecModal.CPDL.hilbert_ref.html#lab184">Main Results</a>
+
+</li>
+</ul>
+
+</li>
+</ul>
+</div>
+</div>
+<div id="footer">
+  Generated by <a href="http://coq.inria.fr/">coqdoc</a> and improved with <a href="https://github.com/tebbi/coqdocjs">CoqdocJS</a>
+</div>
+</div>
+</body>
+
+</html>
