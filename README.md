@@ -20,7 +20,7 @@
 [zulip-link]: https://coq.zulipchat.com/#narrow/stream/237663-coq-community-devs.20.26.20users
 
 [coqdoc-shield]: https://img.shields.io/badge/docs-coqdoc-blue.svg
-[coqdoc-link]: https://coq-community.org/comp-dec-modal
+[coqdoc-link]: https://coq-community.org/comp-dec-modal/docs/latest/coqdoc/toc.html
 
 [doi-shield]: https://zenodo.org/badge/DOI/10.22028/D291-26649.svg
 [doi-link]: https://doi.org/10.22028/D291-26649
