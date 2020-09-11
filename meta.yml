@@ -86,6 +86,8 @@ keywords:
 categories:
 - name: Computer Science/Modal Logic
 
+coqdoc_index: "docs/latest/coqdoc/toc.html"
+
 documentation: |-
   ## Documentation
   
