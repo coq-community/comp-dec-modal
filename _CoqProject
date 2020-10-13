@@ -4,59 +4,59 @@
 -arg -w -arg -redundant-canonical-projection
 -arg -w -arg -notation-incompatible-format
 
--Q . CompDecModal
+-Q theories CompDecModal
 
 # Shared Libs
-libs/bcase.v
-libs/edone.v
-libs/base.v
-libs/fset.v
-libs/fset_tac.v
-libs/induced_sym.v
-libs/modular_hilbert.v
-libs/sltype.v
-libs/rewrite_inequality.v
+theories/libs/bcase.v
+theories/libs/edone.v
+theories/libs/base.v
+theories/libs/fset.v
+theories/libs/fset_tac.v
+theories/libs/induced_sym.v
+theories/libs/modular_hilbert.v
+theories/libs/sltype.v
+theories/libs/rewrite_inequality.v
 
 # K
-K/K_def.v
-K/demo.v
-K/hilbert_ref.v
-K/gentzen.v
-K/universal_model.v
-K/results.v
+theories/K/K_def.v
+theories/K/demo.v
+theories/K/hilbert_ref.v
+theories/K/gentzen.v
+theories/K/universal_model.v
+theories/K/results.v
 
 # Kstar
-Kstar/Kstar_def.v
-Kstar/demo.v
-Kstar/hilbert_ref.v
-Kstar/gen_def.v
-Kstar/gen_ref.v
-Kstar/results.v
+theories/Kstar/Kstar_def.v
+theories/Kstar/demo.v
+theories/Kstar/hilbert_ref.v
+theories/Kstar/gen_def.v
+theories/Kstar/gen_ref.v
+theories/Kstar/results.v
 
 # CTL
-CTL/CTL_def.v
-CTL/hilbert.v
-CTL/dags.v
-CTL/demo.v
-CTL/relaxed_pruning.v
-CTL/hilbert_ref.v
-CTL/hilbert_Eme90.v
-CTL/hilbert_LS.v
-CTL/agreement.v
-CTL/gen_def.v
-CTL/hilbert_hist.v
-CTL/gen_hsound.v
-CTL/gen_ref.v
-CTL/gen_dec.v
-CTL/results.v
+theories/CTL/CTL_def.v
+theories/CTL/hilbert.v
+theories/CTL/dags.v
+theories/CTL/demo.v
+theories/CTL/relaxed_pruning.v
+theories/CTL/hilbert_ref.v
+theories/CTL/hilbert_Eme90.v
+theories/CTL/hilbert_LS.v
+theories/CTL/agreement.v
+theories/CTL/gen_def.v
+theories/CTL/hilbert_hist.v
+theories/CTL/gen_hsound.v
+theories/CTL/gen_ref.v
+theories/CTL/gen_dec.v
+theories/CTL/results.v
 
 # PDL
-PDL/PDL_def.v
-PDL/demo.v
-PDL/hilbert_ref.v
+theories/PDL/PDL_def.v
+theories/PDL/demo.v
+theories/PDL/hilbert_ref.v
 
 # CPDL
-CPDL/PDL_def.v
-CPDL/demo.v
-CPDL/hilbert_ref.v
+theories/CPDL/PDL_def.v
+theories/CPDL/demo.v
+theories/CPDL/hilbert_ref.v
 

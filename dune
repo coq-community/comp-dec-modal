@@ -1,4 +1,0 @@
-(coq.theory
- (name CompDecModal)
- (package coq-comp-dec-modal)
- (synopsis "Constructive proofs of soundness and completeness for K, K*, CTL, PDL, and PDL with converse"))
