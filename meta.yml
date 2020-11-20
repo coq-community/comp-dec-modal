@@ -3,7 +3,7 @@ fullname: Completeness and Decidability of Modal Logic Calculi
 shortname: comp-dec-modal
 organization: coq-community
 community: true
-travis: true
+action: true
 coqdoc: true
 doi: 10.22028/D291-26649
 
