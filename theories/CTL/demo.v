@@ -7,6 +7,8 @@ From CompDecModal.libs
 From CompDecModal.CTL
  Require Import CTL_def dags.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -239,7 +241,7 @@ Section DemoToFragment.
 
   Lemma frag_AU C : C |> s^+ -> fAX (fAU s t)^+ \in C -> fAX (fAU s t)^+ \in Fs S -> C \in S ->
     {G : rGraph clause | fragment S T G (fAX (fAU s t)^+) C & #|G| <= 2 * size T}.
-  Proof.
+  Proof using demoST.
     move => C1 C2 C3 C4.
     have C4' : C \in T. exact: demoSsubT demoST _ _.
     have CinAUL : C \in [fset C in T | fulfillsAU S T s t C] by rewrite inE C4' demo2.
@@ -360,7 +362,7 @@ Section DemoToFragment.
 
   Lemma frag_AR C : C |> s^- -> fAX (fAR s t)^- \in C -> fAX (fAR s t)^- \in Fs S -> C \in S ->
     {G : rGraph clause | fragment S T G (fAX (fAR s t)^-) C & #|G| <= 2 * size T}.
-  Proof.
+  Proof using demoST.
     move => C1 C2 C3 C4.
     have C4' : C \in T. exact: demoSsubT demoST _ _. 
     have CinARl : C \in [fset C in T | fulfillsAR S T s t C] by rewrite inE C4' demo3.
@@ -411,7 +413,7 @@ Section DemoToFragment.
 
   Lemma simple_frag s C : (forall G, label (root G) = C -> ev_cond s G) ->
     C \in S -> { G : rGraph clause | fragment S T G s C & #|G| <= 2 * size T}.
-  Proof.
+  Proof using demoST.
     move => ev_s inDD.
     pose xs : seq clause := [fset D in S | suppC D (R C)].
     pose V := option (seq_sub xs).
@@ -455,12 +457,12 @@ Section DemoToFragment.
     forall L u (inFs : u \in Fs D) (inD : L \in D), {G : rGraph clause | fragment D Dl G u L & #|G| <= n}.
 
   Lemma DD_bounded_demo : bounded_demo S T (2 * size T).
-  Proof.
+  Proof using demoST.
     move => C u'. case: (evP C u') => [s t ->|s t ->|]; auto using frag_AR, frag_AU, simple_frag.
   Qed.
 
   Lemma DD_demo_aux : { FRAG : fragment_demo S T | fragment_bound FRAG (2 * size T) }.
-  Proof.
+  Proof using demoST.
     pose FRAG L u (inFs : u \in Fs S) (inDD : L \in S) :=
       let G := DD_bounded_demo inFs inDD in exist _ (s2val G) (s2valP G).
     exists (FragmentDemo FRAG (demoSsubT demoST) (demoT demoST)).
@@ -752,7 +754,7 @@ Section ModelConstruction.
 
   Lemma model_existence u L :
     u \in Fs D -> L \in D -> exists (M : fmodel) (w : M), forall s, L |> s -> eval (interp' s) w.
-  Proof.
+  Proof using Dl FD.
     move => inF inDF. exists MD.
     pose p := (SeqSub _ inF, SeqSub _ inDF). exists (Mstate (root (Frag p))).
     move => s supp_s. apply: supp_eval. by rewrite /= label_root.

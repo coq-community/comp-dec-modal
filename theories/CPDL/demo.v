@@ -6,6 +6,8 @@ From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs Require Import edone bcase fset base.
 From CompDecModal.CPDL Require Import PDL_def.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -67,7 +69,7 @@ Section ModelExistience.
   Unset Printing Records.
 
   Lemma model_of_cnf c s : s \in val c -> is_cnf (drop_sign s).
-  Proof. move => A. exact: cnf_S (valP c). Qed.
+  Proof using cnf_S. move => A. exact: cnf_S (valP c). Qed.
 
   Lemma model_of_dc c s : s \in val c -> hintikka' s (val c).
   Proof. case/demoD0/andP : (valP c) => _ /allP. apply. Qed.
@@ -76,7 +78,7 @@ Section ModelExistience.
   Lemma model_reach_pos p s c d : 
     (forall t e, sizef t < sizep p -> t^- \in val e -> ~ eval t e) ->
     [p]s^+ \in val c -> reach p c d -> s^+ \in val d.
-  Proof.
+  Proof using cnf_S.
     elim: p s c d => [a|p0 IH0 p1 IH1|p0 IH0 p1 IH1|p IHp|t|p IHp] s c d /= Ht.
     - rewrite /= /Mtrans /restrict /= /rtrans => A /andP[] /subP B _. apply: B. by rewrite RE.
     - move/model_of_dc => /= /andP[A B] []. 
@@ -117,7 +119,7 @@ Section ModelExistience.
 
   (* Theorem 4.6 (Demo Theorem) *)
   Theorem demo_eval s b c :  (s, b) \in val c -> eval (interp (s, b)) c.
-  Proof with discharge_with ssrlia.
+  Proof with discharge_with ssrlia using cnf_S.
     move: s b c. apply: (nat_size_ind (f := sizef)) => s IH b.
     case: s b IH => [|x|s t|p s] [|] IH c;
       try by rewrite /= ?(LCF (ssvalP c)); auto.

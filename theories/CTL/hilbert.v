@@ -7,6 +7,8 @@ From CompDecModal.libs
 From CompDecModal.CTL
  Require Import CTL_def.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.

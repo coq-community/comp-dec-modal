@@ -8,6 +8,8 @@ From CompDecModal.CTL
  Require Import CTL_def hilbert.
 Import IC.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -35,7 +37,7 @@ Section Agreement.
   Local Notation ARb := (ARb e p q).
 
   Lemma auP2 w : reflect (pAU e p q w) (AUb w).
-  Proof.
+  Proof using serial_e.
     rewrite /AUb; apply: introP => [|nLfp].
     - move: w. pattern (lfp (AU_fun e p q)). apply: lfp_ind; first by move => ?; rewrite inE.
       move => X IH w. case/setUP; rewrite !inE. 
@@ -64,7 +66,7 @@ Section Agreement.
   Qed.
 
   Lemma pARE1 w : pAR e p q w -> q w.
-  Proof. 
+  Proof using serial_e.
     case: (xchoose_rel serial_e) => f Hf. 
     have pth: path e (fun n => iter n f w) by move => m; exact: Hf.
     move => Hw. case: (Hw (fun n => iter n f w) pth (erefl _) 0) => //. by case. 
@@ -80,7 +82,7 @@ Section Agreement.
   Qed.
 
   Lemma arP2 w : reflect (pAR e p q w) (ARb w).
-  Proof.
+  Proof using serial_e.
     apply: (iffP arP).
     - move => H pi p1 p2.
       suff S n : (exists2 m : nat, m < n & p (pi m)) \/ cAR e p q (pi n).
@@ -162,7 +164,7 @@ Section Paths.
   Qed.
     
   Lemma EU1 (dc : DC_ X) w : cEU R P Q w -> pEU R P Q w.
-  Proof. 
+  Proof using R_serial.
     elim => {w} [w Qw|w v Pw wv _ IH]. 
     + case: (dc _ R_serial w) => f ? ?. exists f. split => //. exists 0 => //. congruence.
     + case: IH => f [f1 f2 [n Bn Qn]]. exists (pcons w f).
@@ -190,7 +192,7 @@ Section Paths.
 
   (** This is, up to duality, the converse direction of AU1, see AU2 below *)
   Lemma ER1 (xm : XM ) (dc : DC_ X) w : cER R P Q w -> pER R P Q w.
-  Proof.
+  Proof using R_serial.
     move => H.
     pose R' x y := R x y /\ (cER R P Q x -> ~ P x -> cER R P Q y).
     have R'_serial x : exists y, R' x y. 
@@ -212,7 +214,7 @@ Section Paths2.
   Hypothesis (R_serial : forall x, exists y, R x y).
 
   Lemma AU2 (xm : XM) (dc : DC_ X) P Q w : pAU R P Q w -> cAU R P Q w.
-  Proof.
+  Proof using R_serial.
     move => H. apply: (dn xm) => C. 
     apply (dmAU xm) in C. apply (ER1 R_serial xm dc) in C. 
     move: H. exact: pAU_pER.
@@ -229,7 +231,7 @@ Section Paths2.
   Qed.
 
   Lemma AR1 (xm : XM) (dc : DC_ X) P Q w : pAR R P Q w -> cAR R P Q w.
-  Proof. 
+  Proof using R_serial.
     move => H. apply: (dn xm) => C. 
     apply (dmAR xm) in C. apply (EU1 R_serial dc) in C.
     exact: pAR_pEU H.
@@ -249,7 +251,7 @@ Section Soundness.
 Variables (xm : XM) (dc : DC).
 
 Lemma sts_agreement (M:sts) (w :M) s : eval s w <-> satisfies s w.
-Proof.
+Proof using xm dc.
   elim: s w => //= [s IHs t IH|s IHs|s IHs t IH|s IHs t IH] w.
   - firstorder.
   - firstorder. 
@@ -262,7 +264,7 @@ Proof.
 Qed.
 
 Lemma sts_path_soundness s : prv s -> forall (M : sts) (w : M), satisfies s w.
-Proof. 
+Proof using xm dc.
   move => H M w. 
   have modelP : ldec (@eval M) by move => *; exact: xm.
   set M' := CModel modelP. apply/sts_agreement. exact: (@soundness _ H M').
@@ -376,7 +378,7 @@ Section LPO.
    Qed.
 
    Lemma LPO_of_disjunctive_AR : (forall n, f n = false) \/ exists n, f n = true.
-   Proof.
+   Proof using hyp_AR.
      case: (hyp_AR AR3_0 path_pi3 (erefl _)) => H; [left|right].
      - move => n. apply: contraTF (H n.+3) => Hn.
        rewrite /= (_ : [exists m : 'I_n.+2, f m] = true) //=.

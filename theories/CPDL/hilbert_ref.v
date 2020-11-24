@@ -6,6 +6,8 @@ From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs Require Import edone bcase fset base modular_hilbert.
 From CompDecModal.CPDL Require Import PDL_def demo.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -54,7 +56,7 @@ Section HilbertRef.
 
     (* Lemma 6.1 *)
     Lemma not_hint_max C : C \in PU -> maximal F C -> ~~ hintikka C -> prv ([af C] ---> Bot).
-    Proof.
+    Proof using sfc_F.
       move/powersetP => Csub /allP => M. 
       rewrite negb_and. case/orP; first exact: ax_lcons.
       case/allPn => s inC /=. move: (Csub _ inC). move/flip_drop_sign.
@@ -127,7 +129,7 @@ Section HilbertRef.
 
     Lemma extension0 C : C \in PU ->
       prv ([af C] ---> \or_(D <- [fset D in S0 | C `<=` D]) [af D]).
-    Proof.
+    Proof using sfc_F.
       rewrite powersetE. apply: (slack_ind (P := fun C => prv ([af C] ---> _))) => D IH sub.
       case (boolP (maximal F D)).
       - case (boolP (hintikka D)).
@@ -147,7 +149,7 @@ Section HilbertRef.
     (* Lemma 6.2 (Extension) *)
     Lemma extension C : C \in PU ->
       prv ([af C] ---> \or_(D <- [fset D in S | C `<=` D]) [af D]).
-    Proof.
+    Proof using coref_S sfc_F.
       move => Csub. rewrite -> extension0 => //. apply: bigOE => D. rewrite !inE.
       case/andP => /and3P [Dsub M H] CsubD.
       case inS: (D \in S).
@@ -157,7 +159,7 @@ Section HilbertRef.
 
     (* Lemma 6.3 (Admissibility of P1 *)
     Lemma adm_P1 C : C \in PU -> ~~ S |> C -> href C.
-    Proof.
+    Proof using coref_S sfc_F.
       rewrite /href => H1 H2. rewrite -> extension => //.
       apply: bigOE => D. rewrite inE => /andP [D1 D2]. case: notF.
       apply: contraNT H2 => _. by apply/hasP; exists D.
@@ -165,7 +167,7 @@ Section HilbertRef.
 
     Lemma nsub_contra C D :
       C \in S -> D \in S -> ~~ (C `<=` D) -> prv ([af C] ---> [af D] ---> fF).
-    Proof.
+    Proof using sub_S.
       move => /(subP sub_S). rewrite inE powersetE. case/and3P => sub _ _.
       move/(subP sub_S). rewrite inE. case/and3P => _ _ /allP maxD. case/subPn.
       case => s [|]; move => inC ninD; move: (maxD s); rewrite (negbTE ninD) ?orbF /=;
@@ -176,14 +178,14 @@ Section HilbertRef.
     
     (* Lemma 6.4 *)
     Lemma neq_contra C D : C \in S -> D \in S -> C != D -> prv ([af C] ---> [af D] ---> fF).
-    Proof.
+    Proof using sub_S.
       move => CinS DinS. rewrite eqEsub negb_and.
       case/orP => H; [exact: nsub_contra | rule axC; exact: nsub_contra].
     Qed.
 
     (* Lemma 6.5 (1) *)
     Lemma or_S : prv (\or_(C <- S) [af C]).
-    Proof.
+    Proof using coref_S sfc_F.
       apply (rMP (s := [af fset0])).
       - rewrite -> extension; last by rewrite powersetE sub0x. apply: bigOE => C. rewrite inE.
         case/andP => inS _. exact: bigOI.
@@ -192,14 +194,14 @@ Section HilbertRef.
 
     (* Lemma 6.5 (2) *)
     Lemma neg_or A : A `<=` S -> prv ((~~: \or_(C <- A) [af C]) ---> \or_(C <- S `\` A) [af C]).
-    Proof.
+    Proof using coref_S sfc_F.
       move => sub. mp; last exact: or_S. apply: bigOE => C inS. case inA: (C \in A).
       - rewrite <- (bigOI _ inA). exact: axContra.
       - rule axC. drop. apply: bigOI. by rewrite inE inS inA.
     Qed.
 
     Lemma maxS0 C s b : C \in S -> (s,b) \notin C -> s \in F -> (s,~~ b) \in C.
-    Proof. 
+    Proof using sub_S.
       move/(subP sub_S). rewrite inE => /and3P[_ _ /allP] H inC /H.
       case: b inC => /negbTE-> //=. by rewrite orbF.
     Qed.
@@ -219,7 +221,7 @@ Section HilbertRef.
     (* Lemma 6.7 *)
     Lemma adm_P2_aux C D p u : [p]u \in F -> 
       C \in S -> D \in S -> ~~ reach_demo S p C D -> prv ([af C] ---> [p]~~:[af D]).
-    Proof with adm_P2_aux_tac.
+    Proof with adm_P2_aux_tac using coref_S sfc_F sub_S.
       elim: p u C D => [a|p0 IH0 p1 IH1|p0 IH0 p1 IH1|p IHp|s|p IHp] u C D Hu CinS DinS /=.
       rewrite negb_and. case/orP.
       - rewrite -has_predC. case/hasP. case => s [|]; last by rewrite (negbTE (Rpos _ _ _)).
@@ -286,13 +288,15 @@ Section HilbertRef.
     Qed.
 
     Lemma sfc_box p s : [p]s \in F -> s \in F.
-    Proof. by case: p => [a|p1 p2|p1 p2|p|t|p] /sfc_F => /=; case:(s \in F); rewrite ?andbF. Qed.
+    Proof using sfc_F.
+      by case: p => [a|p1 p2|p1 p2|p|t|p] /sfc_F => /=; case:(s \in F); rewrite ?andbF.
+    Qed.
 
     (* Lemma 6.8 (Admissibility of P2 *)
     Lemma adm_P2 C p s :
       C \in S -> [p]s^- \in C -> ~~[some D in S, reach_demo S p C D && (s^- \in D)]
         -> href C.
-    Proof.
+    Proof using coref_S sfc_F sub_S.
       move => inS inC. rewrite -all_predC. move/allP => nR.
       set X := [fset D in S | [fset s^-] `<=` D].
       have AAX: prv ([af C] ---> [p]\and_(D <- X) ~~:[af D]).
@@ -321,7 +325,7 @@ Section HilbertRef.
 
   (* Lemma 6.9 *)
   Theorem href_of C : pref F C -> href C.
-  Proof. elim => *;[ apply: adm_P1 | apply: adm_P2 ]; eassumption. Qed.
+  Proof using sfc_F. elim => *;[ apply: adm_P1 | apply: adm_P2 ]; eassumption. Qed.
  
 End HilbertRef.
 

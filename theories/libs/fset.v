@@ -73,6 +73,8 @@ S -- subset
 
 *)
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -933,19 +935,19 @@ Section Fixpoints.
   Proof. move => H. apply lfp_ind_aux => [?| X IH x]; [by rewrite in_fset0| exact: H]. Qed.
 
   Lemma iterFsub1 n : iter n F fset0 `<=` iter n.+1 F fset0.
-  Proof. elim: n => //= n IH. exact: F_mono. Qed.
+  Proof using F_mono. elim: n => //= n IH. exact: F_mono. Qed.
 
   Lemma iterFsub n m : n <= m -> iter n F fset0 `<=` iter m F fset0.
-  Proof. 
+  Proof using F_mono.
     move/subnK<-. elim: (m-n) => {m} [|m IHm]; first exact: subxx.
     apply: sub_trans IHm _. rewrite addSn. exact: iterFsub1. 
   Qed.
 
   Lemma iterFbound n : iter n F fset0 `<=` U.
-  Proof. elim: n => //= n. exact: F_bound. Qed.
+  Proof using F_bound. elim: n => //= n. exact: F_bound. Qed.
 
   Lemma lfpE : lfp = F lfp.
-  Proof.
+  Proof using F_bound F_mono.
     suff: exists k : 'I_(size U).+1 , iter k F fset0 == iter k.+1 F fset0.
       case => k /eqP E. apply: iter_fix E _. exact: leq_ord.
     apply/existsP. apply: contraT. rewrite negb_exists => /forallP H.
@@ -957,7 +959,10 @@ Section Fixpoints.
   Qed.
 
   Lemma lfp_level_aux x : x \in lfp -> exists n, x \in iter n.+1 F fset0.
-  Proof. move => lf. exists (size U). apply/subP : lf. exact: iterFsub1. Qed.
+  Proof using F_mono.
+    move => lf. exists (size U).
+    apply/subP : lf. exact: iterFsub1.
+  Qed.
 
   (** Should be [level] but this is not picked up by coqdoc *)
   Definition levl (x : T) (lx : x \in lfp) := ex_minn (lfp_level_aux lx).
@@ -1004,10 +1009,12 @@ Section GreatestFixpoint.
   Definition gfp := ~` (lfp U F').
 
   Lemma gfpE : gfp = F gfp.
-  Proof. by rewrite /gfp {1}(lfpE _) ?fsetCK ?F_bound. Qed.
+  Proof using mono_F' F_mono F_bound.
+    by rewrite /gfp {1}(lfpE _) ?fsetCK ?F_bound.
+  Qed.
 
   Lemma gfp_ind_aux (P : {fset T} -> Type) : P U -> (forall s , P s -> P (F s)) -> P gfp.
-  Proof. 
+  Proof using F_bound.
     move => PU Pn. rewrite /gfp /F'. 
     apply lfp_ind_aux => [|A]; rewrite ?fsetD0 ?fsetCK ?F_bound //. exact: Pn.
   Qed.
@@ -1015,7 +1022,7 @@ Section GreatestFixpoint.
   Lemma gfp_ind (P : T -> Type) :
     (forall x X, (forall y, y \in U -> P y -> y \in X) -> P x -> x \in F X) -> 
     forall x, x \in U -> P x -> x \in gfp.
-  Proof. move => H. apply gfp_ind_aux => [//|*]. exact: H. Qed.
+  Proof using F_bound. move => H. apply gfp_ind_aux => [//|*]. exact: H. Qed.
 End GreatestFixpoint.
 
 

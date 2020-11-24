@@ -8,6 +8,8 @@ From CompDecModal.libs
 From CompDecModal.K
  Require Import K_def demo.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -74,7 +76,7 @@ Section RefPred.
   Ltac Lsupp3 := move => L; rewrite /= ?suppCU !suppC1 /=; by bcase.
 
   Lemma ref_R0 C : C \in U -> (forall D, D \in base S0 C -> gen D) -> gen C.
-  Proof.
+  Proof using sfc_F.
     move: C. apply: @nat_size_ind _ _ (@weight _) _ => C IH inU.
     case: (posnP (weight C)) => [/weight0 lC |/weightS wC] B.
     - case (boolP (lcons C)) => L; last exact: lcons_gen.
@@ -95,14 +97,14 @@ Section RefPred.
 
   Lemma ref_coref S C : C \in U -> coref F gen S -> 
     (forall D, D \in base S C -> gen D) -> gen C.
-  Proof.
+  Proof using sfc_F.
     move => inU corefS baseP. apply: ref_R0 inU _ => D /sepP [D1 D2].
     case: (boolP (D \in S)) => H; first by apply: baseP; rewrite inE H.
     apply: corefS. by rewrite inE D1.
   Qed.
 
   Lemma ref_R1 S C : C \in U -> coref F gen S -> ~~ suppS S C -> gen C.
-  Proof.
+  Proof using sfc_F.
     move => inU coS sSC. apply: ref_R0 => // D. rewrite inE => /andP[D1 D2].
     apply: coS. rewrite inE D1 /=. apply: contraNN sSC => ?. by apply/hasP; exists D.
   Qed.
@@ -111,7 +113,7 @@ Section RefPred.
   Proof. by constructor. Qed.
 
   Lemma gen_of_ref C : ref F C -> gen C.
-  Proof. elim => *;[ apply: ref_R1 | apply: ref_R2]; eassumption. Qed.
+  Proof using sfc_F. elim => *;[ apply: ref_R1 | apply: ref_R2]; eassumption. Qed.
 
 End RefPred.
 

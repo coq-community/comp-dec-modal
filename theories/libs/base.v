@@ -5,6 +5,8 @@ From mathcomp Require Import all_ssreflect.
 Require Import Relations.
 From CompDecModal.libs Require Import edone bcase.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -161,20 +163,20 @@ Section LeastFixPoint.
   Qed.
 
   Lemma iterFsub n : iter n F set0 \subset iter n.+1 F set0.
-  Proof.
+  Proof using monoF.
     elim: n => //=; first by rewrite sub0set.
     move => n IH /=. by apply: monoF.
   Qed.
 
   Lemma iterFsubn m n : m <= n -> iter m F set0 \subset iter n F set0.
-  Proof.
+  Proof using monoF.
     elim : n; first by rewrite leqn0 ; move/eqP->.
     move => n IH. rewrite leq_eqVlt; case/orP; first by move/eqP<-.
     move/IH => /= IHe. apply: subset_trans IHe _. exact:iterFsub.
   Qed.
 
   Lemma lfpE : lfp = F lfp.
-  Proof.
+  Proof using monoF.
     suff: exists k : 'I_#|T|.+1 , iter k F set0 == iter k.+1 F set0.
       case => k /eqP E. apply: iter_fix E _. exact: leq_ord.
     apply/existsP. rewrite -[[exists _,_]]negbK negb_exists.
@@ -195,12 +197,15 @@ Section GreatestFixPoint.
   Let F' A := ~: F (~: A).
 
   Lemma mono_F' : mono F'.
-  Proof. move =>  A B. rewrite /F' -setCS [~: F _ \subset _]setCS. exact: F_mono. Qed.
+  Proof using F_mono.
+    move =>  A B.
+    rewrite /F' -setCS [~: F _ \subset _]setCS. exact: F_mono.
+  Qed.
   
   Definition gfp := ~: lfp F'.
 
   Lemma gfpE : gfp = F gfp.
-  Proof. by rewrite /gfp {1}(lfpE mono_F') setCK. Qed.
+  Proof using F_mono. by rewrite /gfp {1}(lfpE mono_F') setCK. Qed.
 
   Lemma gfp_ind (P : {set T} -> Type) : 
     P setT -> (forall s , P s -> P (F s)) -> P gfp.

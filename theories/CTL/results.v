@@ -10,6 +10,8 @@ From CompDecModal.CTL
 From CompDecModal.CTL
  Require Import gen_def gen_dec gen_hsound gen_ref.
 
+Set Default Proof Using "Type".
+
 (** * Main Results *)
 
 (** Equivalence of Hilbert Systems *)
@@ -98,5 +100,5 @@ Section LPO.
 
   Lemma LPO_of_disjunctive_AR (f : nat -> bool) :
     (forall n, f n = false) \/ exists n, f n = true.
-  Proof. exact: LPO_of_disjunctive_AR. Qed.
+  Proof using hyp_AR. exact: LPO_of_disjunctive_AR. Qed.
 End LPO.

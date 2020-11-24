@@ -9,6 +9,8 @@ From CompDecModal.libs
 From CompDecModal.Kstar
  Require Import Kstar_def demo hilbert_ref gen_def. 
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -173,7 +175,7 @@ Section Pruning.
   Qed.
 
   Lemma R1inU C s : C \in U -> fAX s^- \in C -> s^- |` R C \in U.
-  Proof.
+  Proof using sfc_F.
     move => CinU inC. rewrite powersetU RinU // powersetE fsub1 andbT.
     rewrite powersetE in CinU. by move/(subP CinU)/sfc_F : inC.
   Qed.
@@ -181,7 +183,7 @@ Section Pruning.
   (** The pruning demo is corefutable *)
 
   Lemma coref_S : coref ref S.
-  Proof.
+  Proof using sfc_F.
     apply: prune_myind => [C|C S]; first by rewrite inE andbN.
     case/orP.
     - case/allPn => D. case/fimsetP => t /sepP [inC].
@@ -197,7 +199,7 @@ Section Pruning.
   Qed.
 
   Lemma S_refute C : C \in U -> ~~ suppS S C -> ref C.
-  Proof. move => inU. apply: R1 inU _  => //. exact: coref_S. Qed.
+  Proof using sfc_F. move => inU. apply: R1 inU _  => //. exact: coref_S. Qed.
 
 End Pruning.
 
@@ -228,7 +230,7 @@ Section RefPred.
   Ltac Lsupp3 := move => L; rewrite /= ?suppCU !suppC1 /=; by bcase.
 
   Lemma tref_R0 C a : C \in U -> (forall D, D \in base S0 C -> gen (D,a)) -> gen (C,a).
-  Proof.
+  Proof using sfc_F.
     move: C. apply: @nat_size_ind _ _ (@weight _) _ => C IH inU.
     case: (posnP (weight C)) => [/weight0 lC |/weightS wC] B.
     - case (boolP (lcons C)) => L; last exact: lcons_gen.
@@ -248,7 +250,7 @@ Section RefPred.
   Qed.
 
   Lemma tref_R1 S C : C \in U -> coref F tref S -> ~~ suppS S C -> tref C.
-  Proof.
+  Proof using sfc_F.
     move => inU coS sSC. apply: tref_R0 => // D. rewrite inE => /andP[D1 D2].
     apply: coS. rewrite inE D1 /=. apply: contraNN sSC => ?. by apply/hasP; exists D.
   Qed.
@@ -262,7 +264,7 @@ Section RefPred.
     
   Lemma tref_R3 S C s : S `<=` S0 -> coref F tref S -> C \in S ->
     fAX (fAG s)^- \in C -> ~ fulfillAG S0 S s C -> tref C.
-  Proof.
+  Proof using sfc_F.
     move => subS0 corefS inS inC H.
     have {H} AGn : C \notin fulfillAGb S0 S s by apply/fulfillAGP; tauto.
     have inF: s^- \in F. 
@@ -291,7 +293,7 @@ Section RefPred.
   Qed.
 
   Lemma refpred_tref C : ref F C -> tref C.
-  Proof. by elim => *; eauto using tref_R1, tref_R2, tref_R3. Qed.
+  Proof using sfc_F. by elim => *; eauto using tref_R1, tref_R2, tref_R3. Qed.
 
 End RefPred.
 

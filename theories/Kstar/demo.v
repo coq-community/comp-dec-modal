@@ -8,6 +8,8 @@ From CompDecModal.libs
 From CompDecModal.Kstar
  Require Import Kstar_def.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -191,7 +193,7 @@ Section Pruning.
   Qed.
 
   Lemma R1inU C s : C \in U -> fAX s^- \in C -> s^- |` R C \in U.
-  Proof.
+  Proof using sfc_F.
     move => CinU inC. rewrite powersetU RinU // powersetE fsub1 andbT.
     rewrite powersetE in CinU. by move/(subP CinU)/sfc_F : inC.
   Qed.
@@ -199,7 +201,7 @@ Section Pruning.
   (** The pruning demo is corefutable *)
 
   Lemma coref_DD : coref ref DD.
-  Proof.
+  Proof using sfc_F.
     apply: prune_myind => [C|C S]; first by rewrite inE andbN.
     case/orP.
     - case/allPn. (do 2 case) => // s [//|] inC nS inS corefS subS0.
@@ -212,7 +214,7 @@ Section Pruning.
   Qed.
 
   Lemma DD_refute C : C \in U -> ~~ suppS DD C -> ref C.
-  Proof. move => inU. apply: R1 inU _  => //. exact: coref_DD. Qed.
+  Proof using sfc_F. move => inU. apply: R1 inU _  => //. exact: coref_DD. Qed.
 
 End Pruning.
 

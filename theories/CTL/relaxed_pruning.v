@@ -8,6 +8,8 @@ From CompDecModal.libs
 From CompDecModal.CTL
  Require Import CTL_def dags demo.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -27,14 +29,14 @@ Section Prune.
   Definition S0 := [fset L in U | literalC L && lcons L].
 
   Lemma Fsub s t X : t \in ssub s -> s \in X -> X \in U -> t \in F.
-  Proof.
+  Proof using sfc_F.
     move => Hsub sX XU. rewrite powersetE in XU.
     have/(sf_ssub sfc_F)/subP : s \in F by exact: (subP XU).
     by apply.
   Qed.
 
   Lemma ReqU L C : L \in U -> C \in Req L -> C \in U.
-  Proof.
+  Proof using sfc_F.
     move => inU. rewrite !inE. case/predU1P => [->|]; first by rewrite RinU.
     case/fimsetP => s. rewrite inE andbC. move: s => [[|p|? ?|s|? ?|? ?] [|]] //= inL ->.
     rewrite powersetU RinU // andbT powersetE fsub1.
@@ -132,7 +134,7 @@ Section Prune.
   Qed.
 
   Lemma coref_DD : coref ref DD.
-  Proof.
+  Proof using sfc_F.
     apply: prune_myind => [C|C S]; first by rewrite inE andbN.
     case/or3P.
     - case/hasP => D D1 D2 inS corefS H. apply: corefD1 (corefS).
@@ -142,7 +144,7 @@ Section Prune.
   Qed.
 
   Lemma DD_refute C : C \in U -> ~~ suppS DD C -> ref C.
-  Proof. move => inU. apply: R1 inU _  => //. exact: coref_DD. Qed.
+  Proof using sfc_F. move => inU. apply: R1 inU _  => //. exact: coref_DD. Qed.
 
 End Prune.
 

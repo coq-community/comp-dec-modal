@@ -3,6 +3,8 @@
 From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs Require Import edone bcase fset base modular_hilbert.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -134,7 +136,7 @@ Section slpTheory.
   Let LF : {fset clause} := [fset C in powerset F | literalC C].
   
   Lemma supp_aux C : C \in powerset F -> mprv ([af C] ---> \or_(D <- base LF C) [af D]).
-  Proof.
+  Proof using ssub_F ssub decompP.
     move: C. apply: @nat_size_ind _ _ (@weight _) _ => C IH inU.
     case: (posnP (weight C)) => [/weight0 lC |/weightS wC].
     - apply (bigOI xaf). by rewrite !inE suppxx; bcase.
