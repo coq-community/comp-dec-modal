@@ -7,6 +7,8 @@ From CompDecModal.libs
 From CompDecModal.K
  Require Import K_def demo gentzen.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.

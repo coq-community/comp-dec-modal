@@ -8,6 +8,8 @@ From CompDecModal.libs
 From CompDecModal.K
  Require Import K_def demo.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -38,7 +40,7 @@ Section RefPred.
 
   Lemma base0P C : C \in U ->
      prv ([af C] ---> \or_(L <- base [fset D in U | literalC D] C) [af L]).
-  Proof with try solve [Lbase1|Lbase3|Lbase4].
+  Proof with try solve [Lbase1|Lbase3|Lbase4] using sfc_F.
     apply: (@supp_aux _ ssub) => /= {C} ; last by move => ?; exact: sf_ssub.
     - move => [[|p|s t|s] [|]] //=; try exact: decomp_lit.
       + apply: (decomp_ab [fset [fset s^-]; [fset t^+]]) => /=...
@@ -75,7 +77,7 @@ Section RefPred.
 
   Lemma baseP C : C \in U ->
      prv ([af C] ---> \or_(D <- base S C) [af D]).
-  Proof.
+  Proof using coref_S sfc_F.
     move => inU. rewrite -> base0P => //.
     apply: bigOE => L. rewrite !inE andbC => /and3P [L1 L2 L3].
     case: (boolP (L \in S)) => LS; first by apply: (bigOI xaf); rewrite inE LS.
@@ -85,7 +87,7 @@ Section RefPred.
   Qed.
 
   Lemma href_R1 C : C \in U -> ~~ suppS S C -> href C.
-  Proof. 
+  Proof using coref_S sfc_F.
     rewrite /href => H1 H2. rewrite -> baseP => //.
     apply: bigOE => D. rewrite inE => /andP [D1 D2]. case:notF.
     apply: contraNT H2 => _. by apply/hasP; exists D.
@@ -94,7 +96,7 @@ Section RefPred.
   End ContextRefutations.
 
   Theorem href_of C : ref F C -> href C.
-  Proof. elim  => *;[ apply: href_R1 | apply: href_R2]; eassumption. Qed.
+  Proof using sfc_F. elim  => *;[ apply: href_R1 | apply: href_R2]; eassumption. Qed.
  
 End RefPred.
 

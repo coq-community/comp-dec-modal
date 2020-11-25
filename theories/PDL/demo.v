@@ -6,6 +6,8 @@ From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs Require Import edone bcase fset base.
 From CompDecModal.PDL Require Import PDL_def.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.

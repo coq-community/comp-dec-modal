@@ -9,6 +9,8 @@ From CompDecModal.CTL
  Require Import CTL_def dags demo hilbert relaxed_pruning.
 Import IC.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
@@ -53,7 +55,7 @@ Section RefPred.
 
   Lemma base0P C : C \in U ->
      prv ([af C] ---> \or_(L <- base [fset D in U | literalC D] C) [af L]).
-  Proof with try solve [Lbase1|Lbase3|Lbase4].
+  Proof with try solve [Lbase1|Lbase3|Lbase4] using sfc_F.
     apply: (@supp_aux _ ssub) => /= {C} ; last by move => ?; exact: sf_ssub.
     - move => [[|p|s t|s|s t|s t] [|]] //=; try exact: decomp_lit.
       - apply: (decomp_ab [fset [fset s^-]; [fset t^+]])...
@@ -96,7 +98,7 @@ Section RefPred.
     - rewrite negbK => pP pN.
       rewrite -> (axA2 [af C]). rewrite -> (bigAE _ pP) at 2.
       rewrite -> (bigAE _ pN). simpl. rule axAcase. exact: axI.
-   Qed.
+  Qed.
 
   Lemma ax_Req C L : C \in Req L -> prv ([af L] ---> EX [af C]).
   Proof.
@@ -120,7 +122,7 @@ Section RefPred.
 
   Lemma baseP C : C \in U ->
      prv ([af C] ---> \or_(L <- base S C) [af L]).
-  Proof.
+  Proof using coref_S sfc_F.
     move => inU. rewrite -> base0P => //.
     apply: bigOE => L /sepP [/sepP [L1 L2] L3].
     case: (boolP (L \in S)) => LS; first by apply: (bigOI xaf); rewrite inE LS.
@@ -130,14 +132,14 @@ Section RefPred.
   Qed.
 
   Lemma coref_supp C : C \in U -> ~~ suppS S C -> href C.
-  Proof.
+  Proof using coref_S sfc_F.
     move => inU sD. rewrite /href. rewrite -> baseP => //. apply: bigOE => D.
     case/sepP => D1 D2. apply: contraN sD. by apply/hasP; exists D.
   Qed.
 
   Lemma unfulfilledAU_refute s t L : L \in S -> (fAX (fAU s t)^+ \in L) ->
     ~~ fulfillsAU S S0 s t L -> mprv ([af L] ---> Bot).
-  Proof.
+  Proof using coref_S sfc_F sub_S.
     move => H1 H2 H3.
     pose I : {fset clause} := [fset X in S | ~~ fulfillsAU S S0 s t X].
     pose u : form := \or_(D <- I) [af D].
@@ -175,7 +177,7 @@ Section RefPred.
 
   Lemma unfulfilledAR_refute s t C : C \in S -> fAX (fAR s t)^- \in C ->
      ~~ fulfillsAR S S0 s t C -> prv ([af C] ---> Bot).
-  Proof.
+  Proof using coref_S sfc_F sub_S.
     move: C => C0 H1 H2 H3.
     have inF : fAX (fAR s t)^- \in F. 
       apply: Fsub (ssub_refl _) H2 _ => //. move/(subP sub_S) : H1. by case/sepP.
@@ -213,7 +215,7 @@ Section RefPred.
   End EventualityRefutations.
 
   Lemma href_translation C : ref F C -> href C.
-  Proof.
+  Proof using sfc_F.
     elim => {C}; eauto using coref_supp,ax_ReqR.
     - move => S C sub0 _ coS inS. case/hasP => [[[]//[]// s t [|] //]] inC.
       exact: unfulfilledAR_refute.

@@ -2,6 +2,8 @@
 From mathcomp Require Import ssreflect ssrbool eqtype seq choice.
 From CompDecModal.libs Require Import edone bcase base fset.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 (*Unset Strict Implicit.*)
 

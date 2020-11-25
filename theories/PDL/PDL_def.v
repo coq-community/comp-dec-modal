@@ -5,6 +5,8 @@ From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs 
  Require Import edone bcase fset base modular_hilbert sltype rewrite_inequality fset_tac.
 
+Set Default Proof Using "Type".
+
 (* add this globally in fset.v ? *)
 Hint Resolve subxx : core.
 
@@ -677,6 +679,7 @@ Section Hintikka.
 
   Variable (C: clause).
   Hypothesis (hint_C: hintikka C).
+  Local Set Default Proof Using "hint_C".
 
   Lemma hint_imp_pos s t : fImp s t^+ \in C -> s^- \in C \/ t^+ \in C.
   Proof. case/andP: hint_C => _ /allP H inC. move: (H _ inC). case/orP; by auto. Qed.

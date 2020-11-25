@@ -3,6 +3,8 @@
 From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs Require Import edone base fset induced_sym.
 
+Set Default Proof Using "Type".
+
 Set Implicit Arguments.
 Unset Strict Implicit.
 Import Prenex Implicits.
