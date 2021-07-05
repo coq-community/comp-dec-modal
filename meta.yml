@@ -53,25 +53,26 @@ license:
 
 supported_coq_versions:
   text: 8.10 or later
-  opam: '{(>= "8.10" & < "8.13~") | (= "dev")}'
+  opam: '{(>= "8.12" & < "8.14~") | (= "dev")}'
 
 tested_coq_opam_versions:
 - version: 'coq-dev'
   repo: 'mathcomp/mathcomp-dev'
+- version: '1.12.0-coq-8.13'
+  repo: 'mathcomp/mathcomp'
 - version: '1.11.0-coq-8.12'
   repo: 'mathcomp/mathcomp'
-- version: '1.10.0-coq-8.11'
-  repo: 'mathcomp/mathcomp'
-- version: '1.9.0-coq-8.10'
-  repo: 'mathcomp/mathcomp'
+
+# “At 01:42 on Sunday.”
+ci_cron_schedule: '42 1 * * 0'
     
 dependencies:
 - opam:
     name: coq-mathcomp-ssreflect
-    version: '{(>= "1.9" & < "1.12~") | (= "dev")}'
+    version: '{(>= "1.10" & < "1.14~") | (= "dev")}'
   nix: ssreflect
   description: |-
-    [MathComp](https://math-comp.github.io) 1.9.0 or later (`ssreflect` suffices)
+    [MathComp](https://math-comp.github.io) 1.10.0 or later (`ssreflect` suffices)
 
 namespace: CompDecModal
 
