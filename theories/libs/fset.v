@@ -636,7 +636,7 @@ Section OperationsTheory.
   Qed.
 
 End OperationsTheory.
-Hint Resolve sub0x fset11 fsubUr fsubUl fsubDl subsep : core.
+#[export] Hint Resolve sub0x fset11 fsubUr fsubUl fsubDl subsep : core.
 Arguments subP {T1 X Y}.
 Prenex Implicits subP.
 
@@ -1185,11 +1185,17 @@ Section AutoLemmas.
   Proof. move => H. apply: sub_trans H _. by rewrite fsubUr. Qed.
 End AutoLemmas.
 
+#[export]
 Hint Resolve subxx fsetUSU fsubUl fsubUr fsubU_auto fsub1_auto
      fsetU_auto1 fsetU_auto2 fsetU_auto3 fsetU_auto4 fset11 fset1U1 : fset.
 
+#[export]
 Hint Extern 4 (is_true _) => (match goal with [ H : is_true (_ `|` _ `<=` _) |- _ ] => case/fsubUsetP : H end) : fset .
+
+#[export]
 Hint Extern 4 (is_true _) => (match goal with [ H : is_true ((_ \in _) && (_ \in _))|- _ ] => case/andP : H end) : fset .
+
+#[export]
 Hint Extern 4 (is_true _) =>
   match goal with
     | [ H : is_true ((_ \in _) && (_ \in _)) |- _] => case/andP : H

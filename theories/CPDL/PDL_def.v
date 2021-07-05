@@ -8,7 +8,7 @@ From CompDecModal.libs
 Set Default Proof Using "Type".
 
 (* add this globally in fset.v ? *)
-Hint Resolve subxx : core.
+#[export] Hint Resolve subxx : core.
 
 Lemma sizes1 (T : choiceType) (x : T) : size [fset x] = 1.
 Proof. by rewrite fset1Es. Qed.
@@ -824,11 +824,11 @@ with cnp (c : bool) (a : prog) :=
   | false, a ;; b => cnp false a ;; cnp false b
   | true, a ;; b => cnp true b ;; cnp true a
   | c,a^* => (cnp c a)^*
-  | c,t?? => (cnf t)??
+  | _,t?? => (cnf t)??
   | c,p^^ => cnp (negb c) p
   end.
 
-Eval simpl in (cnf [((pV 0 + pV 1)^* ;; (pV 2)^^)^^](fV 0)).
+(* Eval simpl in (cnf [((pV 0 + pV 1)^* ;; (pV 2)^^)^^](fV 0)). *)
 
 Ltac restore := rewrite -/(Imp_op _) -/(Neg _) -/(EX _ _).
 

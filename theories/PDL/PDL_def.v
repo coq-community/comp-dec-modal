@@ -8,7 +8,7 @@ From CompDecModal.libs
 Set Default Proof Using "Type".
 
 (* add this globally in fset.v ? *)
-Hint Resolve subxx : core.
+#[export] Hint Resolve subxx : core.
 
 Lemma sizes1 (T : choiceType) (x : T) : size [fset x] = 1.
 Proof. by rewrite fset1Es. Qed.
