@@ -164,7 +164,7 @@ Section SetOfSeq.
   Proof. case: X => s H. by case/andP : (H). Qed.
 
   Lemma set_of_uniq (s : seq T) : uniq s -> perm_eq (set_of s) s.
-  Proof. move => U. apply: uniq_perm_eq (funiq _) U _ => x. exact: set_ofE. Qed.
+  Proof. move => U. apply: uniq_perm (funiq _) U _ => x. exact: set_ofE. Qed.
 End SetOfSeq.
 Global Opaque set_of.
 
@@ -276,10 +276,10 @@ Section OperationsTheory.
 
   (** For fset0 and fset1 we know the repesentative *)
   Lemma fset1Es x : [fset x] = [:: x] :> seq T.
-  Proof. rewrite fset1E. apply: perm_eq_small => //. exact: set_of_uniq. Qed.
+  Proof. rewrite fset1E. apply: perm_small_eq => //. exact: set_of_uniq. Qed.
 
   Lemma fset0Es : fset0 = [::] :> seq T.
-  Proof. rewrite fset0E. apply: perm_eq_small => //. exact: set_of_uniq. Qed.  
+  Proof. rewrite fset0E. apply: perm_small_eq => //. exact: set_of_uniq. Qed.  
 
   Lemma in_sep X p x : x \in [fset y in X | p y] = (x \in X) && (p x).
   Proof. by rewrite sepE set_ofE mem_filter andbC. Qed.
@@ -683,7 +683,7 @@ Lemma big_sep (T R : choiceType) (idx : R) (op : Monoid.com_law idx) (F : T -> R
   \big[op/idx]_(i <- [fset x in X | p x]) F i = \big[op/idx]_(i <- X | p i) F i.
 Proof. 
   rewrite -(big_filter _ p). apply: perm_big.
-  apply: uniq_perm_eq; try by rewrite ?filter_uniq // funiq.
+  apply: uniq_perm; try by rewrite ?filter_uniq // funiq.
   move => x. by rewrite !inE mem_filter andbC.
 Qed.
 
@@ -727,7 +727,7 @@ Section Size.
   Proof. move /subP. exact: uniq_leq_size (funiq _). Qed.
 
   Lemma subsize_eq X Y : X `<=` Y -> size Y <= size X -> X = Y.
-  Proof. move => /subP S H. apply: fset_ext. apply leq_size_perm => //. exact: funiq. Qed.
+  Proof. move => /subP S H. apply: fset_ext. apply uniq_min_size => //. exact: funiq. Qed.
 
   Lemma sizes_eq0 X : (size X == 0) = (X == fset0).
   Proof. 
