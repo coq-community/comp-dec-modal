@@ -586,7 +586,7 @@ with sizep (a : prog) :=
   | p^^ => (sizep p + 1)%N
   end.
 
-(** Wrapper for omega that uses ssreflects operators on [nat] *)
+(** Wrapper for lia that uses ssreflects operators on [nat] *)
 
 Ltac norm := rewrite ?sizes1;simpl in *.
 Ltac normH := match goal with [ H : is_true (_ <= _) |- _] => move/leP : H end.
