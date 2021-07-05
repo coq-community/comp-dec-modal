@@ -90,7 +90,7 @@ Section MTheory0.
 Proof. move => ax A B. by [mp; first mp; first apply ax]. Qed.
 End MTheory0.
 
-Hint Resolve axI : core.
+#[export] Hint Resolve axI : core.
 
 Ltac C := eapply axC.
 Ltac B := eapply axB.
@@ -204,7 +204,7 @@ Section PTheoryBase.
 
 End PTheoryBase.
 
-Hint Resolve axT axAEl axAEr : core.
+#[export] Hint Resolve axT axAEl axAEr : core.
 
 (** Morphisms for defined locial operators *)
 
@@ -277,7 +277,7 @@ Proof. rewrite /Eqi. solve_proper. Qed.
 
 Lemma ax_eq_refl (pS : pSystem)(s : pS) : mprv (s <--> s).
 Proof. rule axEI; exact: axI. Qed.
-Hint Resolve ax_eq_refl : core.
+#[export] Hint Resolve ax_eq_refl : core.
 
 (** *** Big Boolean Operators *)
 

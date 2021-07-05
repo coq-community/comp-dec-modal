@@ -443,7 +443,7 @@ Qed.
 Lemma inU_sfc C : C \in powerset (sfc C).
 Proof. by rewrite powersetE sub_sfc. Qed.
 
-Hint Resolve closed_sfc inU_sfc : core.
+#[export] Hint Resolve closed_sfc inU_sfc : core.
 
 Lemma RinU (F : clause) : sf_closed F -> 
   forall C, C \in powerset F -> R C \in powerset F.

@@ -17,7 +17,7 @@ Import Prenex Implicits.
 
 Implicit Types (C D : clause).
 
-Hint Resolve closed_sfc : core.
+#[export] Hint Resolve closed_sfc : core.
 
 Lemma gen_decP C : reflect (gen C) (gen_dec C).
 Proof. exact: sumboolP. Qed.

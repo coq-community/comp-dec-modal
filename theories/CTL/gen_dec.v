@@ -12,7 +12,7 @@ Unset Strict Implicit.
 Import Prenex Implicits.
 
 
-Hint Constructors gen : core.
+#[export] Hint Constructors gen : core.
 
 (** * Decidability of Gentzen Derivability
 
