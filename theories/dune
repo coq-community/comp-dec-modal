@@ -2,6 +2,11 @@
  (name CompDecModal)
  (package coq-comp-dec-modal)
  (synopsis "Constructive proofs of soundness and completeness for K, K*, CTL, PDL, and PDL with converse")
- (flags -w -projection-no-head-constant -w -notation-overridden -w -redundant-canonical-projection -w -notation-incompatible-format))
+ (flags :standard
+   -w -projection-no-head-constant
+   -w -notation-overridden
+   -w -redundant-canonical-projection
+   -w -notation-incompatible-format
+   -w -deprecated-instance-without-locality))
 
 (include_subdirs qualified)
