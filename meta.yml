@@ -52,12 +52,14 @@ license:
   identifier: CECILL-B
 
 supported_coq_versions:
-  text: 8.10 or later
-  opam: '{(>= "8.12" & < "8.14~") | (= "dev")}'
+  text: 8.12 or later
+  opam: '{(>= "8.12" & < "8.15~") | (= "dev")}'
 
 tested_coq_opam_versions:
 - version: 'coq-dev'
   repo: 'mathcomp/mathcomp-dev'
+- version: '1.13.0-coq-8.14'
+  repo: 'mathcomp/mathcomp'
 - version: '1.12.0-coq-8.13'
   repo: 'mathcomp/mathcomp'
 - version: '1.11.0-coq-8.12'

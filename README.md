@@ -52,7 +52,7 @@ of said algorithm.
 - Coq-community maintainer(s):
   - Christian Doczkal ([**@chdoc**](https://github.com/chdoc))
 - License: [CeCILL-B](LICENSE)
-- Compatible Coq versions: 8.10 or later
+- Compatible Coq versions: 8.12 or later
 - Additional dependencies:
   - [MathComp](https://math-comp.github.io) 1.10.0 or later (`ssreflect` suffices)
 - Coq namespace: `CompDecModal`
