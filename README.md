@@ -54,7 +54,7 @@ of said algorithm.
 - License: [CeCILL-B](LICENSE)
 - Compatible Coq versions: 8.12 or later
 - Additional dependencies:
-  - [MathComp](https://math-comp.github.io) 1.10.0 or later (`ssreflect` suffices)
+  - [MathComp](https://math-comp.github.io) 1.11.0 or later (`ssreflect` suffices)
 - Coq namespace: `CompDecModal`
 - Related publication(s):
   - [A Machine-Checked Constructive Metatheory of Computation Tree Logic](https://www.ps.uni-saarland.de/static/doczkal-diss/index.php) doi:[10.22028/D291-26649](https://doi.org/10.22028/D291-26649)
