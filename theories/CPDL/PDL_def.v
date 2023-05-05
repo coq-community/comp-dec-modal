@@ -1,5 +1,6 @@
 (* (c) Copyright Christian Doczkal and Joachim Bard                       *)
 (* Distributed under the terms of the CeCILL-B license                    *)
+From HB Require Import structures.
 Require Import Relations Lia Setoid Morphisms.
 From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs 
@@ -96,13 +97,10 @@ Proof with case => /=; try (constructor; discriminate).
   - move => p IHp... move => q. apply: (iffP (IHp _)); congruence.
 Qed.
 End Eq.
-    
-Definition form_eqMixin := EqMixin (fst Eq.form_prog_dec).
-Canonical Structure form_eqType := Eval hnf in @EqType form form_eqMixin.
 
-Definition prog_eqMixin := EqMixin (snd Eq.form_prog_dec).
-Canonical Structure prog_eqType := Eval hnf in @EqType prog prog_eqMixin.
+HB.instance Definition _ := hasDecEq.Build form (fst Eq.form_prog_dec).
 
+HB.instance Definition _ := hasDecEq.Build prog (snd Eq.form_prog_dec).
 
 (** To use formulas and other types built around formulas as base type
 for the finite set libaray, we need to show that formulas are
@@ -166,12 +164,7 @@ End formChoice.
 
 (** Note that we only need the [choiceType] and [countType] instances for formulas *)
 
-Definition form_countMixin := PcanCountMixin formChoice.picklefP.
-Definition form_choiceMixin := CountChoiceMixin form_countMixin.
-Canonical Structure form_ChoiceType := Eval hnf in ChoiceType form form_choiceMixin.
-Canonical Structure form_CountType := Eval hnf in CountType form form_countMixin.
-
-
+HB.instance Definition _ : isCountable form := PCanIsCountable formChoice.picklefP.
 
 (** ** Models
 

@@ -1,5 +1,6 @@
 (* (c) Copyright Christian Doczkal, Saarland University                   *)
 (* Distributed under the terms of the CeCILL-B license                    *)
+From HB Require Import structures.
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs
@@ -26,8 +27,7 @@ Inductive annot :=
 Lemma eq_annot_dec (E1 E2 : annot) : {E1 = E2} + {E1 <> E2}.
 Proof. decide equality; apply: eq_comparable. Qed.
 
-Definition annot_eqMixin := EqMixin (compareP eq_annot_dec).
-Canonical Structure annot_eqType := Eval hnf in @EqType annot annot_eqMixin.
+HB.instance Definition _ := hasDecEq.Build annot (compareP eq_annot_dec).
 
 Definition aR (E : annot) := if E is aAXU (p, H) then aAU (p,H) else aVoid.
 
@@ -57,11 +57,7 @@ Module Annot.
   Proof. move => s. case: s => //= p; by rewrite pickleK. Qed.
 End Annot.
 
-
-Definition annot_countMixin := PcanCountMixin (Annot.pickleP).
-Definition annot_choiceMixin := CountChoiceMixin annot_countMixin.
-Canonical Structure annot_choiceType := Eval hnf in ChoiceType annot annot_choiceMixin.
-Canonical Structure annot_CountType := Eval hnf in CountType annot annot_countMixin.
+HB.instance Definition _ : isCountable annot := PCanIsCountable Annot.pickleP.
 
 Implicit Types (C : clause) (E : annot).
 

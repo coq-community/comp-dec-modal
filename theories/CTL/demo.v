@@ -615,7 +615,8 @@ Section ModelConstruction.
       forall y, MRel (Mstate (root (Frag (next p.1, SeqSub (label x) (label_DF lf))))) y <->
                 MRel (Mstate x) y.
   Proof.
-    move => [p' y]. rewrite /MRel /Mstate (negbTE (root_internal _)) [_ && _]/= orbF.
+    move => [p' y]. rewrite /MRel /Mstate (negbTE (root_internal _)) [_ && _]/=.
+    rewrite [in X in X <-> _]orbF.
     split => [le|/orP [le|H]].
     - move: (liftE le) => ?;subst. rightb. rewrite lf /= !eqxx. by rewrite lift_eq in le.
     - move: (liftE le) => ?;subst. rewrite lift_eq in le.

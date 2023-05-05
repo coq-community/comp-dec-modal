@@ -77,7 +77,7 @@ Arguments restrict [T P] Tp e x y.
 Lemma connect_subtype (T : finType) (x0 : T) (e : rel T) (Tp : subFinType (connect e x0)) :
   forall x p, connect (restrict Tp e) (Sub x0 p) x.
 Proof.
-  move => x. case: (SubP x) => {x} - x Px. 
+  move => x. case: (SubP x) => {x} - x Px.
   case/connectP : Px (Px) => pth. elim/last_ind: pth x => [x _ -> Px /= p|pth y IH x /=].
   - by rewrite (bool_irrelevance p Px) connect0.
   - rewrite rcons_path last_rcons.

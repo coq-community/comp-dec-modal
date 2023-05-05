@@ -1,5 +1,6 @@
 (* (c) Copyright Christian Doczkal, Saarland University                   *)
 (* Distributed under the terms of the CeCILL-B license                    *)
+From HB Require Import structures.
 Require Import Recdef.
 From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs Require Import edone bcase base.
@@ -93,19 +94,15 @@ Section FinSets.
   Definition fset_of of phant T := fset_type.
   Identity Coercion type_of_fset_of  : fset_of >-> fset_type.
 
-  Canonical Structure fset_subType := [subType for elements by fset_type_rect].
-  Canonical Structure fset_eqType := EqType _ [eqMixin of fset_type by <:].
+  HB.instance Definition _ := [isSub for elements by fset_type_rect].
+  HB.instance Definition _ := [Choice of fset_type by <:].
   Canonical Structure fset_predType := PredType (fun (X : fset_type) x => nosimpl x \in elements X).
-  Canonical Structure fset_choiceType := Eval hnf in ChoiceType _ [choiceMixin of fset_type by <:].
 End FinSets.
 
 (** Additional Canonical Structures in case T is a countType. 
 This allows sets of sets of countTypes *)
 
-Canonical Structure fset_countType (T : countType) :=
-  Eval hnf in CountType _ [countMixin of fset_type T by <:].
-Canonical Structure fset_subCountType (T : countType) :=
-  Eval hnf in [subCountType of fset_type T].
+HB.instance Definition _ (T : countType) := [Countable of fset_type T by <:].
 
 (** Notation for fsets using Phant to allow the type checker to infer
 the Caonical Structure for the element type *)
@@ -687,10 +684,11 @@ Proof.
   move => x. by rewrite !inE mem_filter andbC.
 Qed.
 
-Canonical Structure fsetU_law (T : choiceType) := 
-  Monoid.Law (@fsetUA T) (@fset0U T) (@fsetU0 T).
-Canonical Structure fsetU_comlaw (T : choiceType) := 
-  Monoid.ComLaw (@fsetUC T).
+HB.instance Definition _ (T : choiceType) :=
+  Monoid.isLaw.Build {fset T} fset0 fsetU (@fsetUA T) (@fset0U T) (@fsetU0 T).
+
+HB.instance Definition _ (T : choiceType) :=
+  SemiGroup.isCommutativeLaw.Build _ fsetU (@fsetUC T).
 
 Notation "\bigcup_( x 'in' X | P )  F" := 
   (\big[fsetU/fset0]_(x <- elements X | P) F) (at level 41).
