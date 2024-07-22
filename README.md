@@ -11,8 +11,8 @@ Follow the instructions on https://github.com/coq-community/templates to regener
 [![coqdoc][coqdoc-shield]][coqdoc-link]
 [![DOI][doi-shield]][doi-link]
 
-[docker-action-shield]: https://github.com/coq-community/comp-dec-modal/workflows/Docker%20CI/badge.svg?branch=master
-[docker-action-link]: https://github.com/coq-community/comp-dec-modal/actions?query=workflow:"Docker%20CI"
+[docker-action-shield]: https://github.com/coq-community/comp-dec-modal/actions/workflows/docker-action.yml/badge.svg?branch=master
+[docker-action-link]: https://github.com/coq-community/comp-dec-modal/actions/workflows/docker-action.yml
 
 [contributing-shield]: https://img.shields.io/badge/contributions-welcome-%23f7931e.svg
 [contributing-link]: https://github.com/coq-community/manifesto/blob/master/CONTRIBUTING.md
@@ -52,9 +52,10 @@ of said algorithm.
 - Coq-community maintainer(s):
   - Christian Doczkal ([**@chdoc**](https://github.com/chdoc))
 - License: [CeCILL-B](LICENSE)
-- Compatible Coq versions: 8.12 or later
+- Compatible Coq versions: 8.16 and 8.17
 - Additional dependencies:
-  - [MathComp](https://math-comp.github.io) 1.11.0 or later (`ssreflect` suffices)
+  - [MathComp](https://math-comp.github.io) 2.0 or later (`ssreflect` suffices)
+  - [Hierarchy Builder](https://github.com/math-comp/hierarchy-builder) 1.6.0 or later
 - Coq namespace: `CompDecModal`
 - Related publication(s):
   - [A Machine-Checked Constructive Metatheory of Computation Tree Logic](https://www.ps.uni-saarland.de/static/doczkal-diss/index.php) doi:[10.22028/D291-26649](https://doi.org/10.22028/D291-26649)
