@@ -140,11 +140,11 @@ Section Paths.
   Lemma dmAU (xm : XM) w : ~ cAU R P Q w -> cER R (PredC P) (PredC Q) w.
   Proof.
     move: w. cofix dmAU => w Hw.
-    have nQw: (~ Q w). move => c. apply Hw. exact: AU0.
+    have @nQw : (~ Q w). move => c. apply Hw. exact: AU0.
     case: (xm (P w)) => [pw|nPw]; last exact: ER0.
-    suff {dmAU} [v v1 v2] : exists2 v, R w v & ~ cAU R P Q v.
+    have @ [v v1 v2] : exists2 v, R w v & ~ cAU R P Q v; last first.
       apply: ERs v1 _. exact: nQw. exact: dmAU.
-    apply: (dn xm) => C. apply: Hw. apply: AUs pw _ => v wv. 
+    apply: (dn xm) => C {nQw}. apply: Hw. apply: AUs pw _ => v wv.
     apply: (dn xm) => C'. apply: C. by exists v.
   Qed.
 
@@ -152,7 +152,7 @@ Section Paths.
   Proof.
     move => H. apply: (dn xm) => C. apply: H. 
     move: w C. cofix dmAR => w Hw.
-    have Qw : Q w. apply: (dn xm) => H. apply Hw. exact: EU0.
+    have @Qw : Q w. apply: (dn xm) => H. apply Hw. exact: EU0.
     case: (xm (P w)) => [Pw|nPw]; first exact: AR0.
     apply: ARs Qw _ => v wv. apply: dmAR => C. apply: Hw. exact: EUs C.
   Qed.
@@ -340,7 +340,7 @@ Lemma AR3_0 : cAR (@trans M3) (eval (fV 0)) (eval (fV 1)) ord0.
 Proof.
   cofix AR3_0. apply: ARs; first done. 
   case. case => [|[|n]] i. 
-  - suff ->: Ordinal i = ord0. move => _. exact: AR3_0. 
+  - have @ ->: Ordinal i = ord0; last first. move => _. exact: AR3_0.
       congr Ordinal. exact: eq_irrelevance.
   - move => _. apply: AR0 => //. 
   - move => H. case: notF. exact: contraTT H.
