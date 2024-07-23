@@ -1,5 +1,6 @@
 (* (c) Copyright Christian Doczkal, Saarland University                   *)
 (* Distributed under the terms of the CeCILL-B license                    *)
+From HB Require Import structures.
 Require Import Relations.
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
@@ -87,8 +88,7 @@ Inductive form :=
 Lemma eq_form_dec (s t : form) : { s = t} + { s <> t}.
 Proof. decide equality; apply eq_comparable. Qed.
 
-Definition form_eqMixin := EqMixin (compareP eq_form_dec).
-Canonical Structure form_eqType := Eval hnf in @EqType form form_eqMixin.
+HB.instance Definition _ := hasDecEq.Build form (compareP eq_form_dec).
 
 (** To use formulas and other types built around formulas as base type
 for the finite set libaray, we need to show that formulas are
@@ -122,10 +122,7 @@ Module formChoice.
   Proof. move => s. by elim: s => //= [s -> t ->| s -> | s -> ]. Qed.
 End formChoice.
 
-Definition form_countMixin := PcanCountMixin formChoice.pickleP.
-Definition form_choiceMixin := CountChoiceMixin form_countMixin.
-Canonical Structure form_ChoiceType := Eval hnf in ChoiceType form form_choiceMixin.
-Canonical Structure form_CountType := Eval hnf in CountType form form_countMixin.
+HB.instance Definition _ : isCountable form := PCanIsCountable formChoice.pickleP.
 
 (** ** Models 
 
