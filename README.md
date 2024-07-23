@@ -52,7 +52,7 @@ of said algorithm.
 - Coq-community maintainer(s):
   - Christian Doczkal ([**@chdoc**](https://github.com/chdoc))
 - License: [CeCILL-B](LICENSE)
-- Compatible Coq versions: 8.16 and 8.17
+- Compatible Coq versions: 8.16 to 8.20
 - Additional dependencies:
   - [MathComp](https://math-comp.github.io) 2.0 or later (`ssreflect` suffices)
   - [Hierarchy Builder](https://github.com/math-comp/hierarchy-builder) 1.6.0 or later

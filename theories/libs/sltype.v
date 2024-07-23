@@ -1,7 +1,7 @@
 (* (c) Copyright Christian Doczkal, Saarland University                   *)
 (* Distributed under the terms of the CeCILL-B license                    *)
 From mathcomp Require Import all_ssreflect.
-From CompDecModal.libs Require Import edone bcase fset base modular_hilbert.
+From CompDecModal.libs Require Import edone bcase fset base induced_sym modular_hilbert.
 
 Set Default Proof Using "Type".
 

@@ -4,7 +4,7 @@ From HB Require Import structures.
 Require Import Relations Lia Setoid Morphisms.
 From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs 
- Require Import edone bcase fset base modular_hilbert sltype rewrite_inequality fset_tac.
+ Require Import edone bcase fset base induced_sym modular_hilbert sltype rewrite_inequality fset_tac.
 
 Set Default Proof Using "Type".
 
@@ -310,7 +310,7 @@ End Hilbert.
   Lemma rNorm p s t : prv (s ---> t) -> prv ([p]s ---> [p]t).
   Proof. move => H. rule axN. exact: rNec. Qed.
 
-  Instance AX_mor (p : prog) : Proper (@mImpPrv prv_mSystem ==> @mImpPrv prv_mSystem) (fAX p).
+  #[export] Instance AX_mor (p : prog) : Proper (@mImpPrv prv_mSystem ==> @mImpPrv prv_mSystem) (fAX p).
   Proof. exact: rNorm. Qed.
 
   Lemma rStar_ind p u s : prv (u ---> [p]u) -> prv (u ---> s) -> prv (u ---> [p^*]s).

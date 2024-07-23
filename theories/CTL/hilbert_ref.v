@@ -4,7 +4,7 @@ Require Import Lia.
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs
- Require Import edone bcase fset base modular_hilbert sltype.
+ Require Import edone bcase fset base induced_sym modular_hilbert sltype.
 From CompDecModal.CTL
  Require Import CTL_def dags demo hilbert relaxed_pruning.
 Import IC.

@@ -3,7 +3,7 @@
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
 From CompDecModal.libs
- Require Import edone bcase fset base modular_hilbert.
+ Require Import edone bcase fset base induced_sym modular_hilbert.
 From CompDecModal.CTL
  Require Import CTL_def hilbert.
 

@@ -21,7 +21,6 @@ Ltac done := trivial; hnf in |- *; intros;
       | split
       | rewrite ?andbT ?andbF ?orbT ?orbF ]
     )
-    | case not_locked_false_eq_true; assumption
     | match goal with
         | H:~ _ |- _ => solve [ case H; trivial ]
       end
