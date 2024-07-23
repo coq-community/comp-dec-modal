@@ -12,7 +12,7 @@ Require Import Setoid Morphisms Basics.
 Class InducedSym {T : Type} (P R : relation T) :=
   induced_iff : forall x y, R x y <-> P x y /\ P y x.
 
-Instance induced_sub {T : Type} (P R : relation T) :
+#[export] Instance induced_sub {T : Type} (P R : relation T) :
   InducedSym P R -> subrelation R P.
 Proof. firstorder. Qed.
 
@@ -45,22 +45,22 @@ Proof.
   firstorder.
 Qed.
 
-Instance induced_mor_p {T : Type} (P R : relation T) m :
+#[export] Instance induced_mor_p {T : Type} (P R : relation T) m :
   InducedSym P R -> Proper (P ==> P) m -> Proper (R ==> R) m.
 Proof. intros ind prop x y Rxy; induced_tac R. Qed.
 
-Instance induced_mor_n {T : Type} (P R : relation T) m :
+#[export] Instance induced_mor_n {T : Type} (P R : relation T) m :
   InducedSym P R -> Proper (P --> P) m -> Proper (R ==> R) m.
 Proof. intros ind prop x y Rxy; induced_tac R. Qed.
 
-Instance induced_mor_pp {T : Type} (P R : relation T) m :
+#[export] Instance induced_mor_pp {T : Type} (P R : relation T) m :
   InducedSym P R -> Proper (P ==> P ==> P) m -> Proper (R ==> R ==> R) m.
 Proof. intros ind prop x y Rxy x' y' Rxy'; induced_tac R. Qed.
 
-Instance induced_mor_pn {T : Type} (P R : relation T) m :
+#[export] Instance induced_mor_pn {T : Type} (P R : relation T) m :
   InducedSym P R -> Proper (P ==> P --> P) m -> Proper (R ==> R ==> R) m.
 Proof. intros ind prop x y Rxy x' y' Rxy'; induced_tac R. Qed.
 
-Instance induced_mor_np {T : Type} (P R : relation T) m :
+#[export] Instance induced_mor_np {T : Type} (P R : relation T) m :
   InducedSym P R -> Proper (P --> P ==> P) m -> Proper (R ==> R ==> R) m.
 Proof. intros ind prop x y Rxy x' y' Rxy'; induced_tac R. Qed.

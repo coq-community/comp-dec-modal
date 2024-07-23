@@ -102,14 +102,14 @@ Ltac Suff u := apply (mp2 (axS u _ _)).
 
 (** Enable Setoid rewriting for with provable implications *)
 
-Instance mImpPrv_rel (mS : mSystem) : PreOrder (@mImpPrv mS).
+#[export] Instance mImpPrv_rel (mS : mSystem) : PreOrder (@mImpPrv mS).
 Proof. split. exact: axI. exact: mImpPrv_trans. Qed.
 
-Instance mprv_mor (mS : mSystem) :
+#[export] Instance mprv_mor (mS : mSystem) :
   Proper ((@mImpPrv mS) ++> Basics.impl) (@mprv mS).
 Proof. move => x y H H'. mp; eassumption. Qed.
 
-Instance Imp_mor (mS : mSystem) :
+#[export] Instance Imp_mor (mS : mSystem) :
   Proper ((@mImpPrv mS) --> (@mImpPrv mS) ++> (@mImpPrv mS)) (@Imp mS).
 Proof.
   move => x' x X y y' Y. rewrite /mImpPrv in X Y *.
@@ -208,15 +208,15 @@ End PTheoryBase.
 
 (** Morphisms for defined locial operators *)
 
-Instance Neg_mor (pS : pSystem) :
+#[export] Instance Neg_mor (pS : pSystem) :
   Proper ((@mImpPrv pS) --> (@mImpPrv pS))(@Neg pS).
 Proof. rewrite /Neg; solve_proper. Qed.
 
-Instance And_mor (pS : pSystem) :
+#[export] Instance And_mor (pS : pSystem) :
   Proper ((@mImpPrv pS) ==> (@mImpPrv pS) ==> (@mImpPrv pS)) (@And pS).
 Proof. by rewrite /And; solve_proper. Qed.
 
-Instance Or_mor (pS : pSystem) :
+#[export] Instance Or_mor (pS : pSystem) :
   Proper ((@mImpPrv pS) ==> (@mImpPrv pS) ==> (@mImpPrv pS)) (@Or pS).
 Proof. by rewrite /Or; solve_proper. Qed.
 
@@ -243,35 +243,35 @@ Section EqiTheoryBase.
   Proof. exact: axAI. Qed.
 End EqiTheoryBase.
 
-Instance eqi_induced_symmety (pS : pSystem) : InducedSym (@mImpPrv pS) (@EqiPrv pS).
+#[export] Instance eqi_induced_symmety (pS : pSystem) : InducedSym (@mImpPrv pS) (@EqiPrv pS).
 Proof.
   move => s t. split => [H | [H1 H2]].
   split. by rule axEEl. by rule axEEr. by rule axEI.
 Qed.
 
-Instance induced_eqi (pS : pSystem) : Equivalence (@EqiPrv pS).
+#[export] Instance induced_eqi (pS : pSystem) : Equivalence (@EqiPrv pS).
 Proof. apply: induced_eqi. Qed.
 
 (** Short cut morphisms for faster equivalence rewrites *)
-Instance mprv_eqi_mor (pS : pSystem) :
+#[export] Instance mprv_eqi_mor (pS : pSystem) :
   Proper (@EqiPrv pS ==> iff) (@mprv pS).
 Proof. move => s t H. split. by rewrite -> H. by rewrite <- H. Qed.
 
-Instance Neg_Eqi_mor (pS : pSystem) :
+#[export] Instance Neg_Eqi_mor (pS : pSystem) :
   Proper ((@EqiPrv pS) ==> (@EqiPrv pS))(@Neg pS).
 Proof. rewrite /Neg; solve_proper. Qed.
 
-Instance And_Eqi_mor (pS : pSystem) :
+#[export] Instance And_Eqi_mor (pS : pSystem) :
   Proper ((@EqiPrv pS) ==> (@EqiPrv pS) ==> (@EqiPrv pS)) (@And pS).
 Proof. by rewrite /And; solve_proper. Qed.
 
-Instance Or_Eqi_mor (pS : pSystem) :
+#[export] Instance Or_Eqi_mor (pS : pSystem) :
   Proper ((@EqiPrv pS) ==> (@EqiPrv pS) ==> (@EqiPrv pS)) (@Or pS).
 Proof. by rewrite /Or; solve_proper. Qed.
 
 (** Rewriting below Equivalences *)
 
-Instance Eqi_mor (pS : pSystem) :
+#[export] Instance Eqi_mor (pS : pSystem) :
   Proper ((@EqiPrv pS) ==> (@EqiPrv pS) ==> (@EqiPrv pS)) (@Eqi pS).
 Proof. rewrite /Eqi. solve_proper. Qed.
 
@@ -518,20 +518,20 @@ Record kSystem := KSystem { psort   :> pSystem;
 Lemma rNorm (kS : kSystem) (s t : kS) : mprv (s ---> t) -> mprv (AX s ---> AX t).
 Proof. move => H. rule axN. exact: rNec. Qed.
 
-Instance AX_mor (kS : kSystem) : Proper ((@mImpPrv kS) ==> (@mImpPrv kS)) (@AX kS).
+#[export] Instance AX_mor (kS : kSystem) : Proper ((@mImpPrv kS) ==> (@mImpPrv kS)) (@AX kS).
 Proof. exact: rNorm. Qed.
 
 Definition EX (kS : kSystem) (s : kS) := ~~: AX (~~: s).
 
-Instance EX_mor (kS : kSystem) : Proper ((@mImpPrv kS) ==> (@mImpPrv kS)) (@EX kS).
+#[export] Instance EX_mor (kS : kSystem) : Proper ((@mImpPrv kS) ==> (@mImpPrv kS)) (@EX kS).
 Proof. move => x y H. rewrite /EX /mImpPrv. by rewrite -> H. Qed.
 
 (** Redundant Morphisms for Equivalence *)
 
-Instance AX_Eqi_mor (kS : kSystem) : Proper ((@EqiPrv kS) ==> (@EqiPrv kS)) (@AX kS).
+#[export] Instance AX_Eqi_mor (kS : kSystem) : Proper ((@EqiPrv kS) ==> (@EqiPrv kS)) (@AX kS).
 Proof. move => s t H. rewrite -> H. reflexivity. Qed.
 
-Instance EX_Eqi_mor (kS : kSystem) : Proper ((@EqiPrv kS) ==> (@EqiPrv kS)) (@EX kS).
+#[export] Instance EX_Eqi_mor (kS : kSystem) : Proper ((@EqiPrv kS) ==> (@EqiPrv kS)) (@EX kS).
 Proof. move => s t H. rewrite -> H. reflexivity. Qed.
 
 Section KTheory.
@@ -609,7 +609,7 @@ Section KStarTheory.
   Lemma rNormS s t : mprv (s ---> t) -> mprv (AG s ---> AG t).
   Proof. move/rNecS. apply: rMP. exact: axAGN. Qed.
 
-  Instance AG_mor : Proper ((@mImpPrv ksS) ==> (@mImpPrv ksS)) (@AG ksS).
+  #[export] Instance AG_mor : Proper ((@mImpPrv ksS) ==> (@mImpPrv ksS)) (@AG ksS).
   Proof. exact: rNormS. Qed.
 
   Lemma axAGEn s : mprv (~~: AG s ---> ~~: s :\/: ~~: AX (AG s)).
@@ -649,25 +649,25 @@ Definition ER {cS : ctlSystem} (s t : cS) := ~~: AU (~~: s) (~~: t).
 Definition EU {cS : ctlSystem} (s t : cS) := ~~: AR (~~: s) (~~: t).
 Notation "'EG' s" := (ER Bot s) (at level 8).
 
-Instance AU_mor (cS : ctlSystem) :
+#[export] Instance AU_mor (cS : ctlSystem) :
   Proper ((@mImpPrv cS) ==> (@mImpPrv cS) ==> (@mImpPrv cS))(@AU cS).
 Proof.
   move => x x' X y y' Y. rewrite /mImpPrv in X Y *.
   apply: rAU_ind. rewrite -> Y. exact: axAUI. rewrite -> X. exact: axAUf.
 Qed.
 
-Instance ER_mor (cS : ctlSystem) :
+#[export] Instance ER_mor (cS : ctlSystem) :
   Proper ((@mImpPrv cS) ==> (@mImpPrv cS) ==> (@mImpPrv cS))(@ER cS).
 Proof. rewrite /ER. solve_proper. Qed.
 
-Instance AR_mor (cS : ctlSystem) :
+#[export] Instance AR_mor (cS : ctlSystem) :
   Proper ((@mImpPrv cS) ==> (@mImpPrv cS) ==> (@mImpPrv cS))(@AR cS).
 Proof.
   move => x x' X y y' Y. rewrite /mImpPrv in X Y *.
   apply: rAR_ind. rewrite <- Y. exact: axARE. rewrite <- X. exact: axARu.
 Qed.
 
-Instance EU_mor (cS : ctlSystem) :
+#[export] Instance EU_mor (cS : ctlSystem) :
   Proper ((@mImpPrv cS) ==> (@mImpPrv cS) ==> (@mImpPrv cS))(@EU cS).
 Proof. rewrite /EU. solve_proper. Qed.
 

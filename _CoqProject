@@ -3,7 +3,6 @@
 -arg -w -arg -notation-overridden
 -arg -w -arg -redundant-canonical-projection
 -arg -w -arg -notation-incompatible-format
--arg -w -arg -deprecated-instance-without-locality
 
 -Q theories CompDecModal
 

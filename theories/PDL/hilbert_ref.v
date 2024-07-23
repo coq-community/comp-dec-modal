@@ -3,7 +3,7 @@
 Require Import Relations.
 Require Import mathcomp.ssreflect.ssreflect.
 From mathcomp Require Import all_ssreflect.
-From CompDecModal.libs Require Import edone bcase fset base modular_hilbert.
+From CompDecModal.libs Require Import edone bcase fset base induced_sym modular_hilbert.
 From CompDecModal.PDL Require Import PDL_def demo.
 
 Set Default Proof Using "Type".
