@@ -101,7 +101,7 @@ keywords:
 - name: propositional dynamic logic
 
 categories:
-- name: Computer Science/Modal Logic
+- name: Mathematics/Logic/Modal logic
 
 coqdoc_index: "docs/latest/coqdoc/toc.html"
 
